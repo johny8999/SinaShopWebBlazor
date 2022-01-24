@@ -110,8 +110,20 @@ namespace SinaShop.Application.Languages
                                                         }).ToListAsync();
             }
         }
+        public async Task<bool?> IsValidAbbrForSiteLangAsync()
+        {
+            try
+            {
 
-    
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+        }
+
+
 
         public async Task<List<OutSiteLanguageCache>> GetAllLanguageSiteLangAsync()
         {

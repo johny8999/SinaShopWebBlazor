@@ -1,31 +1,30 @@
-
 using FrameWork.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using SinaShop.Infrastructure.Core.Configuration;
 using SinaShop.Infrastructure.Logger.SeriLoger;
 using SinaShop.Infrastructure.Seed.Base.Main;
 using SinaShop.WebApp.Authentication;
 using SinaShop.WebApp.Config;
-using System;
-
+using SinaShop.WebApp.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 WebApplication app = null;
 
 #region ConfigureServices
 {
-    builder.Host.ConfigureWebHost(WebBuilder => {
-        if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == Environments.Development)
-        {
-            WebBuilder.UseSerilog_Console();
-        }
-        else
-        {
-            WebBuilder.UseSerilog_SqlServer();
-        }
-    });
+
+    if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == Environments.Development)
+    {
+        builder.Host.UseSerilog_Console();
+    }
+    else
+    {
+        builder.Host.UseSerilog_SqlServer();
+    }
+
 
     builder.Services.AddCustomLocalization();
 
@@ -55,14 +54,14 @@ WebApplication app = null;
         app.UseHsts();
     }
 
-    app.UseHttpsRedirection();
+    //app.UseHttpsRedirection();
     app.UseStaticFiles();
 
     app.UseRouting();
     app.UseCustomLocalization();
     app.UseJWTAuthentication();
 
-
+    app.UseMiddleware<RedirectToValidLangMiddleware>();
     app.UseEndpoints(endpoints =>
     {
 
