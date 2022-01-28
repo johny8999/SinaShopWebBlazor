@@ -15,15 +15,15 @@ namespace FrameWork.ExMethods
             if (input is null)
                 throw new ArgumentInvalidException($"{nameof(input)} Can not be null.");
 
-            List<ValidationResult> validationResults = new();
-            ValidationContext validationContext = new(input,serviceProvider,default);
+            var validationResult = new List<ValidationResult>();
+            ValidationContext validationContext = new(input);
             validationContext.InitializeServiceProvider(a => serviceProvider);
 
-            if (Validator.TryValidateObject(input, validationContext, validationResults,true))
+            if (!Validator.TryValidateObject(input, validationContext, validationResult, true))
             {
-                if (validationContext is not null)
+                if (validationResult is not null)
                 {
-                    string concat=String.Join("",validationResults.Select(x => x.ErrorMessage));
+                    string concat = string.Join(" ", validationResult.Select(a => a.ErrorMessage));
                     throw new ArgumentInvalidException(concat);
                 }
             }

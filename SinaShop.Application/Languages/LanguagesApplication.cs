@@ -118,7 +118,8 @@ namespace SinaShop.Application.Languages
             try
             {
                 input.CheckModelState(_ServiceProvider);
-                return await _languageRepository.Get.AnyAsync(a=>a.Equals(input.Abbr));
+                return await _languageRepository.Get.AnyAsync(a => a.Abbr.Equals(input.Abbr));
+               
             }
             catch (ArgumentInvalidException e)
             {

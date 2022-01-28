@@ -13,6 +13,7 @@ namespace SinaShop.WebApp.Middlewares
         {
             _next = next;
         }
+
         public async Task InvokeAsync(HttpContext context)
         {
             if (context.Request.Method.ToLower().Equals("get"))
@@ -64,5 +65,5 @@ namespace SinaShop.WebApp.Middlewares
 
         }
     }
-}
+} 
 
