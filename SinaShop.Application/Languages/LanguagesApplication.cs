@@ -9,6 +9,7 @@ using SinaShop.Domain.Region.LanguageAgg.Entities;
 using FrameWork.ExMethods;
 using Microsoft.EntityFrameworkCore;
 using FrameWork.Infrastructure;
+using FrameWork.Application.Arguments;
 
 namespace SinaShop.Application.Languages
 {
@@ -16,12 +17,14 @@ namespace SinaShop.Application.Languages
     {
         private readonly ILanguageRepository _languageRepository;
         private readonly ILogger _logger;
-        private List<OutSiteLanguageCache> _siteLangCach;
+        private List<OutSiteLanguageCache> _SiteLangCach;
+        private IServiceProvider _ServiceProvider;
 
-        public LanguagesApplication(ILanguageRepository languageRepository, ILogger logger)
+        public LanguagesApplication(ILanguageRepository languageRepository, ILogger logger, IServiceProvider ServiceProvider)
         {
             _languageRepository = languageRepository;
             _logger = logger;
+            _ServiceProvider = ServiceProvider;
         }
 
         public async Task<OperationResult> AddLanguageAsync(InpAddLanguage Input)
@@ -81,7 +84,7 @@ namespace SinaShop.Application.Languages
             try
             {
                 await LoadCacheAsync();
-                return _siteLangCach.Where(a => a.Abbr.Equals(Abbr))
+                return _SiteLangCach.Where(a => a.Abbr.Equals(Abbr))
                              .Select(a => a.Code).SingleOrDefault();
             }
             catch (Exception ex)
@@ -93,9 +96,9 @@ namespace SinaShop.Application.Languages
 
         private async Task LoadCacheAsync()
         {
-            if (_siteLangCach is null)
+            if (_SiteLangCach is null)
             {
-                _siteLangCach = await _languageRepository.Get
+                _SiteLangCach = await _languageRepository.Get
                                                         .Where(a => a.IsActive)
                                                         .Where(a => a.UseForSiteLanguage)
                                                         .Select(a => new OutSiteLanguageCache
@@ -110,25 +113,28 @@ namespace SinaShop.Application.Languages
                                                         }).ToListAsync();
             }
         }
-        public async Task<bool?> IsValidAbbrForSiteLangAsync()
+        public async Task<bool?> IsValidAbbrForSiteLangAsync(InpIsValidAbbrForSiteLang input)
         {
             try
             {
-
+                input.CheckModelState(_ServiceProvider);
+                return await _languageRepository.Get.AnyAsync(a=>a.Equals(input.Abbr));
+            }
+            catch (ArgumentInvalidException e)
+            {
+                _logger.Debug(e);
+                return null;
             }
             catch (Exception e)
             {
-
-                throw;
+                _logger.Error(e);
+                return null;
             }
         }
-
-
-
         public async Task<List<OutSiteLanguageCache>> GetAllLanguageSiteLangAsync()
         {
             await LoadCacheAsync();
-            return _siteLangCach;
+            return _SiteLangCach;
         }
     }
 }

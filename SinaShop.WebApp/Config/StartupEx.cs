@@ -5,6 +5,7 @@ using SinaShop.WebApp.Localization.Resources;
 using System.Globalization;
 using Microsoft.AspNetCore.Builder;
 using SinaShop.WebApp.Common.Utilities.IpAddress;
+using FrameWork.Application.Services.Localizer;
 
 namespace SinaShop.WebApp.Config
 {

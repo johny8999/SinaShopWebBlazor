@@ -1,4 +1,4 @@
-﻿namespace SinaShop.WebApp.Localization
+﻿namespace FrameWork.Application.Services.Localizer
 {
     public interface ILocalizer
     {

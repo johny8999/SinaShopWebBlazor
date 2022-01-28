@@ -8,6 +8,6 @@ namespace SinaShop.Application.Languages
         Task<OperationResult> AddLanguageAsync(InpAddLanguage Input);
         Task<string> GetCodeByAbbrAsync(string Abbr);
         Task<List<OutSiteLanguageCache>> GetAllLanguageSiteLangAsync();
-     
+        Task<bool?> IsValidAbbrForSiteLangAsync(InpIsValidAbbrForSiteLang input);
     }
 }

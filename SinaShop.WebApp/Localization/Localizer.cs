@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Localization;
+﻿using FrameWork.Application.Services.Localizer;
+using Microsoft.Extensions.Localization;
 using SinaShop.WebApp.Localization.Resources;
 
 namespace SinaShop.WebApp.Localization
