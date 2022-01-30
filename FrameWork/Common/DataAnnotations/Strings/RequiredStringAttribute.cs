@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SinaShop.WebApp.Common.DataAnnotations.Strings
 {
-    public class RequiredStringAnnotation : ValidationAttribute
+    public class RequiredStringAttribute : ValidationAttribute
     {
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
