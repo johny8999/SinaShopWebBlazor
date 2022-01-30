@@ -1,12 +1,28 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Globalization;
+using FrameWork.Infrastructure;
+using ILogger = FrameWork.Infrastructure.ILogger;
 
 namespace SinaShop.WebApp.Pages.Auth.Register
 {
     public class RegisterModel : PageModel
     {
-        public void OnGet()
+        private readonly ILogger _Logger;
+
+        public RegisterModel(ILogger logger)
         {
+            _Logger = logger;
+        }
+        public IActionResult OnGet(string ReturnUrl = null)
+        {
+            //ViewData["ReturnUrl"] = ReturnUrl ?? $"/{CultureInfo.CurrentCulture.Name}/Auth/Login";
+            ViewData["ReturnUrl"] = ReturnUrl ?? $"/{CultureInfo.CurrentCulture.Parent.Name}/Auth/Login";
+            return Page();
+        }
+        public void OnPost()
+        {
+
         }
     }
 }

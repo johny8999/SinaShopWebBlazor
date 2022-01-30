@@ -1,6 +1,4 @@
-﻿using SinaShop.Application.Contract.Languages;
-using SinaShop.Application.Contract.Result;
-using SinaShop.Domain.Region.LanguageAgg.Contract;
+﻿using SinaShop.Domain.Region.LanguageAgg.Contract;
 using System;
 using System.Linq;
 using System.Text;
@@ -10,6 +8,8 @@ using FrameWork.ExMethods;
 using Microsoft.EntityFrameworkCore;
 using FrameWork.Infrastructure;
 using FrameWork.Application.Arguments;
+using SinaShop.Application.Contract.ApplicationDTO.Languages;
+using SinaShop.Application.Contract.ApplicationDTO.Result;
 
 namespace SinaShop.Application.Languages
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SinaShop.Application.Contract.Result
+namespace SinaShop.Application.Contract.ApplicationDTO.Result
 {
     public class OperationResult
     {

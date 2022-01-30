@@ -1,5 +1,5 @@
-﻿using SinaShop.Application.Contract.Languages;
-using SinaShop.Application.Contract.Result;
+﻿using SinaShop.Application.Contract.ApplicationDTO.Languages;
+using SinaShop.Application.Contract.ApplicationDTO.Result;
 
 namespace SinaShop.Application.Languages
 {

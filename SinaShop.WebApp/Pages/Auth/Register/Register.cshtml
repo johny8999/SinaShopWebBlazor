@@ -4,7 +4,13 @@
     ViewData["Title"] = Localizer["Register"];
     Layout = "~/Pages/Shared/_MainLayout.cshtml";
 }
-
+<div class="MsgValidation">
+    {0} دارای کاراکترهای غیر مجاز است. کاراکترهای مجاز :
+    <ul>
+        <li>حروف انگلیسی و فارسی</li>
+        <li>خط فاصله</li>
+    </ul>
+</div>
 <div class="main-container container">
     <ul class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i></a></li>

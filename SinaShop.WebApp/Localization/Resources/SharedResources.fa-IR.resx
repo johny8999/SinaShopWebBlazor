@@ -117,10 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Abbr" xml:space="preserve">
+    <value>مخفف</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>ایمیل</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>نام</value>
+  </data>
+  <data name="FullNameMsg" xml:space="preserve">
+    <value>&lt;div class="MsgValidation"&gt;
+    {0} دارای کاراکترهای غیر مجاز است. کاراکترهای مجاز :
+    &lt;ul&gt;
+        &lt;li&gt;حروف انگلیسی و فارسی&lt;/li&gt;
+        &lt;li&gt;خط فاصله&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</value>
+  </data>
   <data name="LanguageIsDuplicate" xml:space="preserve">
     <value>زبان وارد شده تکراری است</value>
   </data>
+  <data name="LanguageIsDuplicate1" xml:space="preserve">
+    <value>زبان وارد شده تکراری است</value>
+  </data>
+  <data name="MaxLengthStringMsg" xml:space="preserve">
+    <value>{0} نباید بیشتر از {1} باشد</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>کلمه عبور</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>ثبت نام</value>
+  </data>
+  <data name="Register1" xml:space="preserve">
+    <value>ثبت نام</value>
+  </data>
+  <data name="ReguiredStringMsg" xml:space="preserve">
+    <value>{0} را وارد کنید</value>
+  </data>
+  <data name="RetypePassword" xml:space="preserve">
+    <value>تکرار کلمه عبور</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
   </data>
 </root>

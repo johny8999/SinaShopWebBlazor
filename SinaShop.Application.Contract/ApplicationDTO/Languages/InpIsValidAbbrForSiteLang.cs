@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using FrameWork.Common.DataAnnotations.Strings;
 using SinaShop.WebApp.Common.DataAnnotations.Strings;
 
-namespace SinaShop.Application.Contract.Languages
+namespace SinaShop.Application.Contract.ApplicationDTO.Languages
 {
     public class InpIsValidAbbrForSiteLang
     {
