@@ -86,5 +86,3 @@ namespace SinaShop.WebApp.Config
         }
     }
 }
-
-
