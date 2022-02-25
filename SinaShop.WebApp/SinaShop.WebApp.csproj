@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Pages\Home\Index.cshtml~RF1056b95.TMP" />
   </ItemGroup>
 
@@ -24,6 +28,10 @@
 
   <ItemGroup>
     <Folder Include="Loggers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
   </ItemGroup>
 
 </Project>

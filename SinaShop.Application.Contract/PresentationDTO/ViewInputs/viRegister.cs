@@ -21,6 +21,7 @@ namespace SinaShop.Application.Contract.PresentationDTO.ViewInputs
         [Display(Name = "Email")]
         [RequiredString]
         [MaxLengthString(100)]
+        [Email]
         public string Email { get; set; }
 
         [Display(Name = "Password")]
@@ -36,6 +37,7 @@ namespace SinaShop.Application.Contract.PresentationDTO.ViewInputs
         [Compare(nameof(Password))]
         public string RetypePassword { get; set; }
 
-
+        [Display(Name = "IAgree")]
+        public bool IAgree { get; set; }
     }
 }

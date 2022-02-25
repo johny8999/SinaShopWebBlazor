@@ -120,8 +120,17 @@
   <data name="Abbr" xml:space="preserve">
     <value>مخفف</value>
   </data>
+  <data name="Call us to free" xml:space="preserve">
+    <value>تماس با ما </value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>ادامه</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>ایمیل</value>
+  </data>
+  <data name="EmailMsg" xml:space="preserve">
+    <value>قالب {0} اشتباه است و قالب صحیح: Example@domain.com</value>
   </data>
   <data name="FullName" xml:space="preserve">
     <value>نام</value>
@@ -135,10 +144,16 @@
     &lt;/ul&gt;
 &lt;/div&gt;</value>
   </data>
-  <data name="LanguageIsDuplicate" xml:space="preserve">
-    <value>زبان وارد شده تکراری است</value>
+  <data name="IAgree" xml:space="preserve">
+    <value>موافقت با قوانین</value>
   </data>
-  <data name="LanguageIsDuplicate1" xml:space="preserve">
+  <data name="If you already have an account with us, please click" xml:space="preserve">
+    <value>اگر ثبت نام کرده اید لطفا روی &lt;a href="{0}"&gt;صحفه ورود&lt;/a&gt; کلیک کنید</value>
+  </data>
+  <data name="IReadTerm" xml:space="preserve">
+    <value>من با &lt;a href="{0}"&gt;قوانین &lt;/a&gt; موافق هستم</value>
+  </data>
+  <data name="LanguageIsDuplicate" xml:space="preserve">
     <value>زبان وارد شده تکراری است</value>
   </data>
   <data name="MaxLengthStringMsg" xml:space="preserve">
@@ -150,16 +165,10 @@
   <data name="Register" xml:space="preserve">
     <value>ثبت نام</value>
   </data>
-  <data name="Register1" xml:space="preserve">
-    <value>ثبت نام</value>
-  </data>
   <data name="ReguiredStringMsg" xml:space="preserve">
     <value>{0} را وارد کنید</value>
   </data>
   <data name="RetypePassword" xml:space="preserve">
     <value>تکرار کلمه عبور</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value />
   </data>
 </root>

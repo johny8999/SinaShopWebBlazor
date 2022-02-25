@@ -1,5 +1,5 @@
 ﻿using FrameWork.Consts;
-using SinaShop.Application.Contract.Languages;
+using SinaShop.Application.Contract.ApplicationDTO.Languages;
 using SinaShop.Application.Languages;
 using SinaShop.WebApp.Common.Utilities.IpAddress;
 using System;

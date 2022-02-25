@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Globalization;
 using FrameWork.Infrastructure;
 using ILogger = FrameWork.Infrastructure.ILogger;
+using SinaShop.Application.Contract.PresentationDTO.ViewInputs;
 
 namespace SinaShop.WebApp.Pages.Auth.Register
 {
@@ -24,5 +25,6 @@ namespace SinaShop.WebApp.Pages.Auth.Register
         {
 
         }
+        public viRegister Input { get; set; }
     }
 }

@@ -24,7 +24,7 @@
 
     <!-- Libs CSS
     ============================================ -->
-    <link rel="stylesheet" href="/main/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/main/css/bootstrap/css/bootstrap-@(ViewData["LangDir"]).min.css">
     <link href="/main/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="/main/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <link href="/main/js/owl-carousel/owl.carousel.css" rel="stylesheet">
@@ -36,16 +36,7 @@
     <link href="/main/css/themecss/so_megamenu.css" rel="stylesheet">
     <link href="/main/css/themecss/so-categories.css" rel="stylesheet">
     <link href="/main/css/themecss/so-listing-tabs.css" rel="stylesheet">
-    <link href="/main/css/footer1.css" rel="stylesheet">
-    <link href="/main/css/header3.css" rel="stylesheet">
-    @if ((string)ViewData["LangDir"] == "rtl")
-    {
-        <link id="color_scheme" href="/main/css/style-rtl.css" rel="stylesheet">
-    }
-    else
-    {
-        <link id="color_scheme" href="/main/css/style-ltr.css" rel="stylesheet">
-    }
+    <link id="color_scheme" href="/main/css/style-@(ViewData["LangDir"]).min.css" rel="stylesheet">
     <link href="/main/css/responsive.css" rel="stylesheet">
 
 </head>
@@ -75,12 +66,12 @@
             <div class="header-top">
                 <div class="container">
                     <div class="row">
-                        <div class="header-top-left form-inline col-lg-6 col-md-5 col-sm-6 compact-hidden hidden-sm ">
+                        <div class="header-top-wellcome form-inline col-lg-6 col-md-5 col-sm-6 compact-hidden hidden-sm ">
                             <div class="form-group navbar-welcome ">
                                 Welcome to market <a href="register.html"><strong>Join Free</strong></a> or <a href="login.html"><strong>Sign in</strong></a>
                             </div>
                         </div>
-                        <div class="header-top-right collapsed-block text-right col-lg-6 col-md-7 col-sm-12 col-xs-12 compact-hidden">
+                        <div class="header-top-options collapsed-block text-right col-lg-6 col-md-7 col-sm-12 col-xs-12 compact-hidden ">
                             <h5 class="tabBlockTitle visible-xs">More<a class="expander " href="home3.html#TabBlock-1"><i class="fa fa-angle-down"></i></a></h5>
                             <div class="tabBlock" id="TabBlock-1">
                                 <ul class="top-link list-inline">
@@ -95,8 +86,9 @@
                                     <li class="checkout"><a href="checkout.html" class="top-link-checkout" title="Checkout"><span class="hidden-xs">Checkout</span></a></li>
 
                                 </ul>
-                                  @(await Html.PartialAsync("~/Pages/Shared/Partial/P_ChangeLanguage.cshtml"))
-                               @* <partial name="~/Pages/Shared/Partial/P_ChangeLanguage.cshtml" model="null"/>*@
+                                @*@(await Html.PartialAsync("~/Pages/Shared/Partial/P_ChangeLanguage.cshtml"))*@
+                                <partial name="~/Pages/Shared/Partial/P_ChangeLanguage.cshtml" model="null" />
+
                                 <div class="form-group currencies-block">
                                     <form action="index.html" method="post" enctype="multipart/form-data" id="currency">
                                         <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -120,104 +112,105 @@
                 <div class="container">
                     <div class="row">
                         <!-- Logo -->
-                        <div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-                            <a href="index.html"><img src="/main/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
+                        <div class="navbar-logo col-md-3 col-sm-12 col-xs-12 ">
+                            <a href="@CultureInfo.CurrentCulture.Parent.Name/index.html"><img src="/main/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
                         </div>
                         <!-- //end Logo -->
                         <!-- Main Menu -->
-                        <div class="phone-contact col-lg-offset-5 col-lg-2 col-md-offset-4 col-md-3 col-sm-9 hidden-xs">
-                            <div class="inner-info">
-                                <strong>Call us to free:</strong><br>
-                                <span>Toll free: 1234567890</span>
+                        <div>
+                            <div class="phone-contact col-lg-offset-5 col-lg-2 col-md-offset-4 col-md-3 col-sm-9 hidden-xs ">
+                                <div class="inner-info ">
+                                    <strong>@Localizer["Call us to free"]:</strong><br>
+                                    <span>Toll free: 1234567890</span>
+                                </div>
                             </div>
-                        </div>
-                        <!-- //Main Menu -->
-                        <!-- Secondary menu -->
-                        <div class="col-md-2 col-sm-3 col-xs-12 shopping_cart pull-right">
-                            <!--cart-->
-                            <div id="cart" class=" btn-group btn-shopping-cart">
-                                <a data-loading-text="Loading..." class="top_cart dropdown-toggle" data-toggle="dropdown">
-                                    <div class="shopcart">
-                                        <span class="handle pull-left"></span>
-                                        <span class="title">My cart</span>
-                                        <p class="text-shopping-cart cart-total-full">2 item(s) - $1,262.00 </p>
-                                    </div>
-                                </a>
+                            <!-- //Main Menu -->
+                            <!-- Secondary menu -->
+                            <div class="col-md-2 col-sm-3 col-xs-12 shopping_cart pull-right">
+                                <!--cart-->
+                                <div id="cart" class=" btn-group btn-shopping-cart">
+                                    <a data-loading-text="Loading..." class="top_cart dropdown-toggle" data-toggle="dropdown">
+                                        <div class="shopcart">
+                                            <span class="handle pull-left"></span>
+                                            <span class="title">My cart</span>
+                                            <p class="text-shopping-cart cart-total-full">2 item(s) - $1,262.00 </p>
+                                        </div>
+                                    </a>
 
-                                <ul class="tab-content content dropdown-menu pull-right shoppingcart-box" role="menu">
-                                    <li>
-                                        <table class="table table-striped">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center" style="width:70px">
-                                                        <a href="product.html"> <img src="/main/image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
-                                                    </td>
-                                                    <td class="text-left"> <a class="cart_product_name" href="product.html">Filet Mign</a> </td>
-                                                    <td class="text-center"> x1 </td>
-                                                    <td class="text-center"> $1,202.00 </td>
-                                                    <td class="text-right">
-                                                        <a href="product.html" class="fa fa-edit"></a>
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center" style="width:70px">
-                                                        <a href="product.html"> <img src="/main/image/demo/shop/product/resize/3.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
-                                                    </td>
-                                                    <td class="text-left"> <a class="cart_product_name" href="product.html">Canon EOS 5D</a> </td>
-                                                    <td class="text-center"> x1 </td>
-                                                    <td class="text-center"> $60.00 </td>
-                                                    <td class="text-right">
-                                                        <a href="product.html" class="fa fa-edit"></a>
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a onclick="cart.remove('1');" class="fa fa-times fa-delete"></a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <table class="table table-bordered">
+                                    <ul class="tab-content content dropdown-menu pull-right shoppingcart-box" role="menu">
+                                        <li>
+                                            <table class="table table-striped">
                                                 <tbody>
                                                     <tr>
-                                                        <td class="text-left">
-                                                            <strong>Sub-Total</strong>
+                                                        <td class="text-center" style="width:70px">
+                                                            <a href="product.html"> <img src="/main/image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
                                                         </td>
-                                                        <td class="text-right">$1,060.00</td>
+                                                        <td class="text-left"> <a class="cart_product_name" href="product.html">Filet Mign</a> </td>
+                                                        <td class="text-center"> x1 </td>
+                                                        <td class="text-center"> $1,202.00 </td>
+                                                        <td class="text-right">
+                                                            <a href="product.html" class="fa fa-edit"></a>
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
+                                                        </td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-left">
-                                                            <strong>Eco Tax (-2.00)</strong>
+                                                        <td class="text-center" style="width:70px">
+                                                            <a href="product.html"> <img src="/main/image/demo/shop/product/resize/3.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
                                                         </td>
-                                                        <td class="text-right">$2.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-left">
-                                                            <strong>VAT (20%)</strong>
+                                                        <td class="text-left"> <a class="cart_product_name" href="product.html">Canon EOS 5D</a> </td>
+                                                        <td class="text-center"> x1 </td>
+                                                        <td class="text-center"> $60.00 </td>
+                                                        <td class="text-right">
+                                                            <a href="product.html" class="fa fa-edit"></a>
                                                         </td>
-                                                        <td class="text-right">$200.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-left">
-                                                            <strong>Total</strong>
+                                                        <td class="text-right">
+                                                            <a onclick="cart.remove('1');" class="fa fa-times fa-delete"></a>
                                                         </td>
-                                                        <td class="text-right">$1,262.00</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <p class="text-right"> <a class="btn view-cart" href="cart.html"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="checkout.html"><i class="fa fa-share"></i>Checkout</a> </p>
-                                        </div>
-                                    </li>
-                                </ul>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-left">
+                                                                <strong>Sub-Total</strong>
+                                                            </td>
+                                                            <td class="text-right">$1,060.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-left">
+                                                                <strong>Eco Tax (-2.00)</strong>
+                                                            </td>
+                                                            <td class="text-right">$2.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-left">
+                                                                <strong>VAT (20%)</strong>
+                                                            </td>
+                                                            <td class="text-right">$200.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-left">
+                                                                <strong>Total</strong>
+                                                            </td>
+                                                            <td class="text-right">$1,262.00</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p class="text-right"> <a class="btn view-cart" href="cart.html"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="checkout.html"><i class="fa fa-share"></i>Checkout</a> </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--//cart-->
                             </div>
-                            <!--//cart-->
                         </div>
                     </div>
-
                 </div>
             </div>
             <!-- //Header center -->
@@ -243,7 +236,7 @@
                                             <span id="remove-megamenu" class="fa fa-times"></span>
                                             <div class="megamenu-pattern">
                                                 <div class="container">
-                                                    <ul class="megamenu " data-transition="slide" data-animationtime="250">
+                                                    <ul class="megamenu  " data-transition="slide" data-animationtime="250">
                                                         <li class="home hover">
                                                             <a href="index.html">Home <b class="caret"></b></a>
                                                             <div class="sub-menu" style="width:100%;">
@@ -740,9 +733,9 @@
         @RenderBody()
 
         <script type="text/javascript">
-<!--
-            var $typeheader = 'header-home3';
-//-->
+            <!--
+                        var $typeheader = 'header-home3';
+            //-->
         </script>
 
         <!-- Footer Container -->
@@ -863,7 +856,7 @@
             <div class="footer-bottom-block ">
                 <div class=" container">
                     <div class="row">
-                        <div class="col-sm-5 copyright-text"> © 2016 Market. All Rights Reserved. </div>
+                       
                         <div class="col-sm-7">
                             <div class="block-payment text-right"><img src="/main/image/demo/content/payment.png" alt="payment" title="payment"></div>
                         </div>
