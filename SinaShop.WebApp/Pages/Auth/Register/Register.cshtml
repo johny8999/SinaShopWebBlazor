@@ -4,7 +4,6 @@
     ViewData["Title"] = Localizer["Register"];
     Layout = "~/Pages/Shared/_MainLayout.cshtml";
 }
-
 <div class="main-container container">
     <ul class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i></a></li>
@@ -15,7 +14,8 @@
         <div id="content" class="col-sm-12">
             <h2 class="title">@Localizer["Register"]</h2>
             <p>@Html.Raw( @Localizer["If you already have an account with us, please click",$"/{CultureInfo.CurrentCulture.Parent.Name}/Auth/Login"])</p>
-            <form class="form-horizontal account-register clearfix">
+            <form class="form-horizontal account-register clearfix" id="FrmRegister">
+                @Html.AntiForgeryToken()
                 <fieldset id="account">
                     <div class="form-group required">
 
@@ -53,7 +53,11 @@
                 </fieldset>
                 <div class="buttons">
                     <div>
-                        <button onclick="" type="button" class="btn btn-primary">@Localizer["Register"]</button>
+                        <button onclick="SendForm('/@ViewData["Culture"]/Auth/Register','FrmRegister')" type="button" 
+                        class="btn btn-primary">@Localizer["Register"]</button>
+
+                        @*<button onclick="Test()" type="button" 
+                        class="btn btn-primary">@Localizer["Register"]</button>*@
                     </div>
                 </div>
             </form>

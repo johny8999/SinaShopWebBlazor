@@ -32,6 +32,8 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\main\js\sweetalert\sweetalert.js" />
+    <None Include="wwwroot\main\js\sweetalert\sweetalert.min.js" />
   </ItemGroup>
 
 </Project>

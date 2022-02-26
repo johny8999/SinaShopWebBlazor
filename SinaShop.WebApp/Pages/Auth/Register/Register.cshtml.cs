@@ -21,10 +21,14 @@ namespace SinaShop.WebApp.Pages.Auth.Register
             ViewData["ReturnUrl"] = ReturnUrl ?? $"/{CultureInfo.CurrentCulture.Parent.Name}/Auth/Login";
             return Page();
         }
-        public void OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
-
+            return Page();
         }
+
+
+        //[BindProperty(SupportsGet =true)] //for get in worked
+        [BindProperty]
         public viRegister Input { get; set; }
     }
 }

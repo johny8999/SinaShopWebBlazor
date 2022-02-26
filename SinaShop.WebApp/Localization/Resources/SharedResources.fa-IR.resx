@@ -120,6 +120,9 @@
   <data name="Abbr" xml:space="preserve">
     <value>مخفف</value>
   </data>
+  <data name="AccessDeniedMsg" xml:space="preserve">
+    <value>دسترسی غیر مجاز</value>
+  </data>
   <data name="Call us to free" xml:space="preserve">
     <value>تماس با ما </value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="EmailMsg" xml:space="preserve">
     <value>قالب {0} اشتباه است و قالب صحیح: Example@domain.com</value>
+  </data>
+  <data name="Error500" xml:space="preserve">
+    <value>عملیات با شکست مواجه شد</value>
   </data>
   <data name="FullName" xml:space="preserve">
     <value>نام</value>
@@ -159,6 +165,9 @@
   <data name="MaxLengthStringMsg" xml:space="preserve">
     <value>{0} نباید بیشتر از {1} باشد</value>
   </data>
+  <data name="OK" xml:space="preserve">
+    <value>باشه</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>کلمه عبور</value>
   </data>
@@ -170,5 +179,8 @@
   </data>
   <data name="RetypePassword" xml:space="preserve">
     <value>تکرار کلمه عبور</value>
+  </data>
+  <data name="TheOperationWasSuccessfull" xml:space="preserve">
+    <value>عملیات با موفقیت انجام شد</value>
   </data>
 </root>
