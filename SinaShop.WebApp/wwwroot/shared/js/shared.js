@@ -7,7 +7,7 @@ function HideLoader() {
 }
 
 function SendForm(_Url, _FormId, _CallBack = function (res) { }) {
-    var form = $('#' + -FormData[0]);
+    var form = $('#' + _FormId)[0];
     var _formData = new FormData(form);
     $.ajax({
         type: "post",
@@ -23,7 +23,7 @@ function SendForm(_Url, _FormId, _CallBack = function (res) { }) {
             var _token = $("[name=__RequestVerificationToken]").val();
             xhr.setRequestHeader('XSRF-TOKEN', _token);
         },
-         success: function (response) {
+        success: function (response) {
             _CallBack(response)
         },
         complete: function (data) {
@@ -32,10 +32,13 @@ function SendForm(_Url, _FormId, _CallBack = function (res) { }) {
         error: function (err) {
             if (err.status == 500) {
                 alert("Error 500");
-                if (err.status == 400) {
-                    alert("Error 400");
                 return;
             }
+            if (err.status == 400) {
+                alert("Error 400");
+                return;
+            }
+            
         }
     });
 }

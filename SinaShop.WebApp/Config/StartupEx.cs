@@ -6,6 +6,7 @@ using System.Globalization;
 using Microsoft.AspNetCore.Builder;
 using SinaShop.WebApp.Common.Utilities.IpAddress;
 using FrameWork.Application.Services.Localizer;
+using SinaShop.WebApp.Common.Utilities.MessageBox;
 
 namespace SinaShop.WebApp.Config
 {
@@ -82,6 +83,7 @@ namespace SinaShop.WebApp.Config
         {
             services.AddSingleton<ILocalizer, Localizer>();
             services.AddScoped<IIpAddressChecker, IpAddressChecker>();
+            services.AddScoped<IMsgBox, MsgBox>();
             return services;
         }
     }
