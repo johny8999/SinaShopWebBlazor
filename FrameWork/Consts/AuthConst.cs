@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace FrameWork.Consts
 {
-    public class SiteSettingConst
+    public class AuthConst
     {
-        public const string SiteUrl = "https://localhost:44351";
-        public const string SiteName = "SinaSop";
+        public const string SecretKey = "q6zOsfFfpTv5lNFRgfi8VizQCckeFzL0";
     }
 }

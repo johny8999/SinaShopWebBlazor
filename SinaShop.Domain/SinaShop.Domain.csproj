@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Users\AccessLevelAgg\Contract\" />
     <Folder Include="Users\RoleAgg\Contract\" />
   </ItemGroup>
 

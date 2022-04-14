@@ -132,6 +132,9 @@
   <data name="Email" xml:space="preserve">
     <value>ایمیل</value>
   </data>
+  <data name="EmailConfirm" xml:space="preserve">
+    <value>تایید ایمیل</value>
+  </data>
   <data name="EmailMsg" xml:space="preserve">
     <value>قالب {0} اشتباه است و قالب صحیح: Example@domain.com</value>
   </data>

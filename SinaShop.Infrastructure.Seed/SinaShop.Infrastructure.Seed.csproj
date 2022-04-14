@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SinaShop.Application\SinaShop.Application.csproj" />
     <ProjectReference Include="..\SinaShop.Domain\SinaShop.Domain.csproj" />
   </ItemGroup>
 

@@ -17,6 +17,7 @@
     <ProjectReference Include="..\SinaShop.Infrastructure.EfCore\SinaShop.Infrastructure.EfCore.csproj" />
     <ProjectReference Include="..\SinaShop.Infrastructure.Logger.SeriLoger\SinaShop.Infrastructure.Logger.SeriLoger.csproj" />
     <ProjectReference Include="..\SinaShop.Infrastructure.Seed\SinaShop.Infrastructure.Seed.csproj" />
+    <ProjectReference Include="..\SinaShop.Infrastructure.Services\SinaShop.Infrastructure.Services.csproj" />
     <ProjectReference Include="..\YasShop.Infrastructure.EfCore.Identity.JWT\SinaShop.Infrastructure.EfCore.Identity.JWT.csproj" />
   </ItemGroup>
 

@@ -2,6 +2,7 @@
 using SinaShop.Domain.Users.UserAgg.Contracts;
 using SinaShop.Domain.Users.UserAgg.Entities;
 using SinaShop.Infrastructure.EfCore.Context;
+using System.Threading.Tasks;
 
 namespace SinaShop.Infrastructure.EfCore.Repository.Users
 {
@@ -16,5 +17,14 @@ namespace SinaShop.Infrastructure.EfCore.Repository.Users
         {
             return await _UserManager.CreateAsync(entity, Password);
         }
+        public async Task<tblUsers> FindByIdAsync(string userId)
+        {
+            return  await _UserManager.FindByIdAsync(userId);
+        }
+        public async Task<string> GenerateEmailConfirmationTokenAsync(tblUsers user)
+        {
+            return await _UserManager.GenerateEmailConfirmationTokenAsync(user);
+        }
+
     }
 }

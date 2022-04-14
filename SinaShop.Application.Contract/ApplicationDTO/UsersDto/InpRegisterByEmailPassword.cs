@@ -22,5 +22,10 @@ public class InpRegisterByEmailPassword
     [MaxLengthString(100)]
     [DataType(DataType.Password)]
     public string Password { get; set; }
+
+    [Display(Name = "ConfirmationLinkTemplate")]
+    [RequiredString]
+    [MaxLengthString(100)]
+    public string ConfirmationLinkTemplate { get; set; }
 }
     
