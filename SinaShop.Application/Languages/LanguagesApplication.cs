@@ -33,9 +33,7 @@ namespace SinaShop.Application.Languages
             try
             {
                 if (Input is null)
-                {
                     throw new ArgumentNullException(nameof(Input));
-                }
 
                 if (await CheckExistAsync(Input.Name, Input.NativeName, Input.Code, Input.Abbr))
                     return new OperationResult().Failed("LanguageIsDuplicate");

@@ -25,8 +25,7 @@ namespace FrameWork.ExMethods
         }
         public static Guid ToGuid(this string input)
         {
-            var q= Guid.Parse(input);
-            return q;
+            return Guid.Parse(input);
         }
 
         /// <summary>
@@ -48,21 +47,22 @@ namespace FrameWork.ExMethods
         }
 
         /// <summary>
-        /// رمز نگاری متن
+        /// رمز گشایی متن
         /// </summary>
-        /// <param name="input">متن اصلی</param>
-        /// <param name="key">کلید رمز نگاری</param>
+        /// <param name="Input"></param>
+        /// <param name="key"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public static string AesDecrypte(this string input, string key)
+        public static string AesDecrypt(this string Input, string key)
         {
-            if (string.IsNullOrWhiteSpace(input))
-                throw new ArgumentException($"'{nameof(input)}' cannot be null or whitespace.", nameof(input));
+            if (string.IsNullOrWhiteSpace(Input))
+                throw new ArgumentException($"'{nameof(Input)}' cannot be null or whitespace.", nameof(Input));
 
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentException($"'{nameof(key)}' cannot be null or whitespace.", nameof(key));
 
-            return EncryptProvider.AESDecrypt(input, key);
+            string Decrypt = EncryptProvider.AESDecrypt(Input, key);
+            return Decrypt;
         }
     }
 }

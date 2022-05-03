@@ -36,7 +36,7 @@ namespace SinaShop.Infrastructure.Logger.SeriLoger
             LoggerConfiguration setting = new();
             setting.MinimumLevel.Is(logEventLevel);
             setting.WriteTo.File(Directory.GetCurrentDirectory() + "/Loggers/logs.txt"
-                    /*, rollingInterval: RollingInterval.Month*/).MinimumLevel.Is(logEventLevel);
+                    /*, rollingInterval: RollingInterval.Year*/).MinimumLevel.Is(logEventLevel);
             setting.Enrich.FromLogContext();
             return setting;
         }

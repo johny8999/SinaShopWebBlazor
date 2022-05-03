@@ -28,15 +28,15 @@ namespace SinaShop.Infrastructure.Seed.Base.AccessLevel
                     });
                 }
 
-                if (!await _AccessLevelRepository.GetNoTraking.AnyAsync(a => a.Name.Equals("NoConfirmUser")))
+                if (!await _AccessLevelRepository.GetNoTraking.AnyAsync(a => a.Name.Equals("NotConfirmedUser")))
                 {
                     await _AccessLevelRepository.AddAsync(new tblAccessLevel()
                     {
                         Id = new Guid().SequentialGuid(),
-                        Name = "NoConfirmUser",
+                        Name = "NotConfirmedUser",
                     });
 
-                    if (!await _AccessLevelRepository.GetNoTraking.AnyAsync(a => a.Name.Equals("DefaultUser")))
+                    if (!await _AccessLevelRepository.GetNoTraking.AnyAsync(a => a.Name.Equals("ConfirmedUser")))
                     {
                         await _AccessLevelRepository.AddAsync(new tblAccessLevel()
                         {

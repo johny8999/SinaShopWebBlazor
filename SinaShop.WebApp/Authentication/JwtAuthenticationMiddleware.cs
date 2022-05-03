@@ -1,8 +1,10 @@
-﻿namespace SinaShop.WebApp.Authentication
+﻿using FrameWork.Consts;
+
+namespace SinaShop.WebApp.Authentication
 {
     public class JwtAuthenticationMiddleware
     {
-       private readonly RequestDelegate _next;
+        private readonly RequestDelegate _next;
 
         public JwtAuthenticationMiddleware(RequestDelegate next)
         {

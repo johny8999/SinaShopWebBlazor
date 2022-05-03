@@ -18,7 +18,7 @@ WebApplication app = null;
 
     if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == Environments.Development)
     {
-        builder.Host.UseSerilog_Console();
+        builder.Host.UseSerilog_File();
     }
     else
     {

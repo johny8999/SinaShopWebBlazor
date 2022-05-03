@@ -32,10 +32,11 @@ namespace SinaShop.Infrastructure.Logger.SeriLoger
 
         public static void UseSerilog_File(this ConfigureHostBuilder webHostBuilder)
         {
+
             webHostBuilder.UseSerilog((builder, Logger) =>
             {
-                Logger.WriteTo.File(Directory.GetCurrentDirectory() + "/Loggers/logs.txt"
-                    /*, rollingInterval: RollingInterval.Month*/).MinimumLevel.Is(LogEventLevel.Error);
+                Logger = new SeriLogConfig().ConfigFile(LogEventLevel.Error);
+                Logger.CreateLogger();
             });
         }
     }

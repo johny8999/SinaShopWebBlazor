@@ -12,8 +12,8 @@ using SinaShop.Infrastructure.EfCore.Context;
 namespace SinaShop.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(MainContext))]
-    [Migration("20220330120949_mg4")]
-    partial class mg4
+    [Migration("20220419155228_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,21 +93,6 @@ namespace SinaShop.Infrastructure.EfCore.Migrations
                     b.ToTable("AspNetUserLogins", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetUserRoles", (string)null);
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
                     b.Property<Guid>("UserId")
@@ -185,6 +170,30 @@ namespace SinaShop.Infrastructure.EfCore.Migrations
                     b.ToTable("tblAccessLevel");
                 });
 
+            modelBuilder.Entity("SinaShop.Domain.Users.AccessLevelAgg.Entities.tblAccessLevelRoles", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(150)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AccessLevelId")
+                        .HasMaxLength(150)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RoleId")
+                        .HasMaxLength(150)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccessLevelId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("tblAccessLevelRoles");
+                });
+
             modelBuilder.Entity("SinaShop.Domain.Users.RoleAgg.Entities.tblRoles", b =>
                 {
                     b.Property<Guid>("Id")
@@ -224,6 +233,24 @@ namespace SinaShop.Infrastructure.EfCore.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("SinaShop.Domain.Users.UserAgg.Entities.tblUserRole", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
                 });
 
             modelBuilder.Entity("SinaShop.Domain.Users.UserAgg.Entities.tblUsers", b =>
@@ -336,14 +363,8 @@ namespace SinaShop.Infrastructure.EfCore.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("SinaShop.Domain.Users.RoleAgg.Entities.tblRoles", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SinaShop.Domain.Users.UserAgg.Entities.tblUsers", null)
                         .WithMany()
                         .HasForeignKey("UserId")
@@ -351,8 +372,33 @@ namespace SinaShop.Infrastructure.EfCore.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+            modelBuilder.Entity("SinaShop.Domain.Users.AccessLevelAgg.Entities.tblAccessLevelRoles", b =>
                 {
+                    b.HasOne("SinaShop.Domain.Users.AccessLevelAgg.Entities.tblAccessLevel", "tblAccessLevel")
+                        .WithMany("tblAccessLevelRoles")
+                        .HasForeignKey("AccessLevelId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SinaShop.Domain.Users.RoleAgg.Entities.tblRoles", "tblRoles")
+                        .WithMany("tblAccessLevelRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("tblAccessLevel");
+
+                    b.Navigation("tblRoles");
+                });
+
+            modelBuilder.Entity("SinaShop.Domain.Users.UserAgg.Entities.tblUserRole", b =>
+                {
+                    b.HasOne("SinaShop.Domain.Users.RoleAgg.Entities.tblRoles", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SinaShop.Domain.Users.UserAgg.Entities.tblUsers", null)
                         .WithMany()
                         .HasForeignKey("UserId")
@@ -373,7 +419,14 @@ namespace SinaShop.Infrastructure.EfCore.Migrations
 
             modelBuilder.Entity("SinaShop.Domain.Users.AccessLevelAgg.Entities.tblAccessLevel", b =>
                 {
+                    b.Navigation("tblAccessLevelRoles");
+
                     b.Navigation("tblUsers");
+                });
+
+            modelBuilder.Entity("SinaShop.Domain.Users.RoleAgg.Entities.tblRoles", b =>
+                {
+                    b.Navigation("tblAccessLevelRoles");
                 });
 #pragma warning restore 612, 618
         }

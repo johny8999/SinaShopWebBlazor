@@ -14,5 +14,11 @@ namespace SinaShop.Domain.Users.UserAgg.Contracts
         Task<IdentityResult> AddAsync(tblUsers entity, string Password);
         Task<string> GenerateEmailConfirmationTokenAsync(tblUsers user);
         Task<tblUsers> FindByIdAsync(string userId);
+        Task<IdentityResult> ConfirmEmailAsync(tblUsers user, string token);
+        Task<IList<string>> GetRolesAsync(tblUsers user);
+        Task<IdentityResult> RemoveFromRolesAsync(tblUsers user, IEnumerable<string> roles);
+        Task<IdentityResult> AddToRolesAsync(tblUsers user, IEnumerable<string> roles);
+        Task<tblUsers> FindByEmailAsync(string email);
+        Task<SignInResult> PasswordSignInAsync(tblUsers user, string password, bool isPersistent, bool lockoutOnFailure);
     }
 }

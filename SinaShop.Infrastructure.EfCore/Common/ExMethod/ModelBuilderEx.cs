@@ -5,7 +5,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+//توضیح
 
+//TODO: Describtion
 namespace SinaShop.Infrastructure.EfCore.Common.ExMethod
 {
     public static class ModelBuilderEx

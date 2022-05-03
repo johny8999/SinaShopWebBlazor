@@ -29,7 +29,7 @@ namespace SinaShop.Infrastructure.Seed.Base.User
         {
             try
             {
-                if (await _UserRepository.GetNoTraking.AnyAsync(a=>a.Email.Equals("sinaalipour89@gmail.com")))
+                if (!await _UserRepository.GetNoTraking.AnyAsync(a=>a.Email=="sinaalipour89@gmail.com"))
                 {
                     await _UserRepository.AddAsync(new tblUsers
                     {
@@ -39,7 +39,8 @@ namespace SinaShop.Infrastructure.Seed.Base.User
                         Fullname = "سینا عالیپور",
                         Date = DateTime.Now,
                         IsActive = true,
-                        UserName = "sinaalipour8999",
+                        EmailConfirmed=true,
+                        UserName = "sinaalipour89@gmail.com",
                         NormalizedUserName = "sinaalipour8999".ToUpper(),
                         PasswordHash = "AQAAAAEAACcQAAAAEGXT98P0X0495qWpYE1/vEpMA1ZgkDxQ77iUENoFOBS93TEDMwcOhFNVUlAMQcTfEw==",
                         SecurityStamp = "DVF26VWYYHBBJSI5F3BFKQWPUCWVYLO6",
