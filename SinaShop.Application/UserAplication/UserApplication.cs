@@ -9,6 +9,7 @@ using SinaShop.Application.AccessLevel;
 using SinaShop.Application.Contract.ApplicationDTO.AccessLevel;
 using SinaShop.Application.Contract.ApplicationDTO.Result;
 using SinaShop.Application.Contract.ApplicationDTO.UsersDto;
+using SinaShop.Application.Contract.JwtDTO;
 using SinaShop.Domain.Users.UserAgg.Contracts;
 using SinaShop.Domain.Users.UserAgg.Entities;
 using System.Net;
@@ -432,6 +433,74 @@ public class UserApplication : IUserApplication
     public async Task<tblUsers> FindUserByEmail(string Email)
     {
         return await _UserRepository.FindByEmailAsync(Email);
+    }
+    public async Task<OperationResult> ForgetPasswordAsync(InpForgetPassword input)
+    {
+        try
+        {
+            #region Validation
+            {
+                input.CheckModelState(_ServiceProvider);
+            }
+            #endregion Validation
+
+            #region Get user
+            tblUsers quser = null;
+            {
+                quser = await _UserRepository.FindByEmailAsync(input.Email);
+
+                if (quser is null)
+                    return new OperationResult().Failed("Email not found");
+
+                if (!quser.IsActive)
+                    return new OperationResult().Failed("Email not found");
+
+                if (!quser.EmailConfirmed)
+                    return new OperationResult().Failed("Email not found");
+            }
+            #endregion Get user
+            
+            #region Generated Token
+            string Token = null;
+            {
+                Token = await _UserRepository.GeneratePasswordResetTokenAsync(quser);
+                Token=Token.AesEncpypt(AuthConst.SecretKey);
+                Token = WebUtility.UrlEncode(Token);
+            }
+            #endregion Generated Token
+
+            #region GenerateLink
+            string GenerateLink = null ;
+            {
+                GenerateLink = input.ForgetPasswordUrl;
+                GenerateLink = GenerateLink.Replace("[TOKEN]".ToUpper(), Token);
+            }
+            #endregion GenerateLink
+
+            #region Generate Email Template
+            string GenerateEmailTemplate = "<a href=[Link]></a>";
+            {
+                GenerateEmailTemplate = GenerateEmailTemplate.Replace("[Link]", Token);
+            }
+            #endregion Generate Email Template
+
+            #region SendEmail
+            {
+                await _EmailSender.SendAsync(input.Email, AuthConst.Issuer + _Localizer["PasswordRecovery"], GenerateEmailTemplate);
+            }
+            #endregion SendEmail
+            return new OperationResult().Successed("Email has been sent and you should click link");
+        }
+        catch (ArgumentInvalidException ex)
+        {
+            _Logger.Debug(ex);
+            return null;
+        }
+        catch (Exception ex)
+        {
+            _Logger.Error(ex);
+            return null;
+        }
     }
 }
 

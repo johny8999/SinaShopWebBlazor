@@ -10,6 +10,7 @@ namespace SinaShop.Application.UserAplication;
     Task<OperationResult> EmailConfirmationAsync(InpEmailConfirmation input);
     Task<tblUsers> FindUserByEmail(string Email);
     Task<tblUsers> FindUserById(string Id);
+    Task<OperationResult> ForgetPasswordAsync(InpForgetPassword input);
     Task<OutGetAllDetails> GetAllDetailsAsync(InpGetAllDetails input);
     Task<OperationResult> LogInByEmailPasswordAsync(InpLoginByEmailPassword input);
     Task<OperationResult> RegisterByEmailPasswordAsync(InpRegisterByEmailPassword Input);

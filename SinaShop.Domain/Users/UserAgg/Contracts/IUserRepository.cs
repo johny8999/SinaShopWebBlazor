@@ -20,5 +20,6 @@ namespace SinaShop.Domain.Users.UserAgg.Contracts
         Task<IdentityResult> AddToRolesAsync(tblUsers user, IEnumerable<string> roles);
         Task<tblUsers> FindByEmailAsync(string email);
         Task<SignInResult> PasswordSignInAsync(tblUsers user, string password, bool isPersistent, bool lockoutOnFailure);
+        Task<string> GeneratePasswordResetTokenAsync(tblUsers user);
     }
 }

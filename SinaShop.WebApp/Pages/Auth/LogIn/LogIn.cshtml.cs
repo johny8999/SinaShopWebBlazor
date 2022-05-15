@@ -69,7 +69,7 @@ namespace SinaShop.WebApp.Pages.Auth.LogIn
             catch (Exception ex)
             {
                 _logger.Error(ex);
-                return _MsgBox.ModelStateMsg(_Localizer["Error500"]);
+                return _MsgBox.FailMsg(_Localizer["Error500"]);
             }
         }
         [BindProperty]

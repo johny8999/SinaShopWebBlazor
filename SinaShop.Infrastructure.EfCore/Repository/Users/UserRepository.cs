@@ -53,5 +53,9 @@ namespace SinaShop.Infrastructure.EfCore.Repository.Users
         {
             return await _SignInManager.PasswordSignInAsync(user, password, isPersistent, lockoutOnFailure);
         }
+        public async Task<string> GeneratePasswordResetTokenAsync(tblUsers user)
+        {
+            return await _UserManager.GeneratePasswordResetTokenAsync(user);
+        }
     }
 }
