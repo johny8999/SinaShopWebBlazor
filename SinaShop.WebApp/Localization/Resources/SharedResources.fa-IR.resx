@@ -177,6 +177,9 @@
   <data name="OK" xml:space="preserve">
     <value>باشه</value>
   </data>
+  <data name="or" xml:space="preserve">
+    <value>یا</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>کلمه عبور</value>
   </data>
@@ -192,6 +195,9 @@
   <data name="RetypePassword" xml:space="preserve">
     <value>تکرار کلمه عبور</value>
   </data>
+  <data name="Sign in" xml:space="preserve">
+    <value>ورود</value>
+  </data>
   <data name="The user has not been finded" xml:space="preserve">
     <value>کابر مورد نطر پیدا نشده است</value>
   </data>
@@ -203,6 +209,9 @@
   </data>
   <data name="Username or password is incorect" xml:space="preserve">
     <value>ایمیل یا رمز عبور اشتباه است</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>خوش آمدید</value>
   </data>
   <data name="your Account is disable" xml:space="preserve">
     <value>حساب کاربری شما غیر فعال است</value>

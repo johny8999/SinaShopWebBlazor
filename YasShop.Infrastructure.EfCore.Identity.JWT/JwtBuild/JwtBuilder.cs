@@ -62,7 +62,7 @@ namespace SinaShop.Infrastructure.EfCore.Identity.JWT.JwtBuild
                 #endregion Get Role
 
                 #region Claim list
-                List<Claim> Claims = null;
+                List<Claim> Claims = new();
                 {
                     Claims.AddRange(new List<Claim>
                     {
@@ -80,7 +80,7 @@ namespace SinaShop.Infrastructure.EfCore.Identity.JWT.JwtBuild
                 #region Descriptor
                 SecurityTokenDescriptor TokenDescriptor = null;
                 {
-                    var Key = Encoding.ASCII.GetBytes(AuthConst.SecretKey);
+                    var Key = Encoding.ASCII.GetBytes(AuthConst.SecretCode);
                     TokenDescriptor = new SecurityTokenDescriptor
                     {
                         Subject = new ClaimsIdentity(Claims),
@@ -98,11 +98,10 @@ namespace SinaShop.Infrastructure.EfCore.Identity.JWT.JwtBuild
                 string GeneratedToken = null;
                 {
                     var SecurityToken = new JwtSecurityTokenHandler().CreateToken(TokenDescriptor);
-                    GeneratedToken = "Bearer" + new JwtSecurityTokenHandler().WriteToken(SecurityToken);
-                   // var q =  new JwtSecurityTokenHandler().ReadJwtToken(GeneratedToken);
+                    GeneratedToken = "Bearer " + new JwtSecurityTokenHandler().WriteToken(SecurityToken);
                 }
-                #endregion Generate token1
-                return GeneratedToken.AesDecrypt(AuthConst.SecretCode);
+                #endregion Generate token
+                return GeneratedToken.AesEncpypt(AuthConst.SecretKey);
             }
             catch (ArgumentInvalidException ex)
             {

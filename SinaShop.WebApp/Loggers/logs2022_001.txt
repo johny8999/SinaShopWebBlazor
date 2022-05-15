@@ -1,3 +1,0 @@
-2022-04-25 18:49:35.144 +04:30 [ERR] Attempted to divide by zero.
-System.DivideByZeroException: Attempted to divide by zero.
-   at SinaShop.WebApp.Pages.Home.IndexModel.OnGet() in D:\MY Files\Web design Learning\Ahmadi\Khososi\3\MySelf\SinaShop\SinaShop.WebApp\Pages\Home\Index.cshtml.cs:line 22

@@ -10,7 +10,7 @@ namespace SinaShop.Application.Contract.JwtDTO
 {
     public class InpCreateToken
     {
-        [RequiredString]
+        
         [GUID]
         public string UserId { get; set; }
     }

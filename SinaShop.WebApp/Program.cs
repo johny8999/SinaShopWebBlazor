@@ -9,6 +9,7 @@ using SinaShop.Infrastructure.Seed.Base.Main;
 using SinaShop.WebApp.Authentication;
 using SinaShop.WebApp.Config;
 using SinaShop.WebApp.Middlewares;
+using FrameWork.Consts;
 
 var builder = WebApplication.CreateBuilder(args);
 WebApplication app = null;
@@ -59,7 +60,7 @@ WebApplication app = null;
 
     app.UseRouting();
     app.UseCustomLocalization();
-    app.UseJWTAuthentication();
+    app.UseJWTAuthentication(AuthConst.CookieName,AuthConst.SecretKey);
 
     app.UseMiddleware<RedirectToValidLangMiddleware>();
     app.UseEndpoints(endpoints =>

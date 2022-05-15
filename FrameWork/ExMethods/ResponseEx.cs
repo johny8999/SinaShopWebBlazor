@@ -15,7 +15,7 @@ namespace FrameWork.ExMethods
         {
             response.Cookies.Delete("AspNetCore.Identity.Application");
 
-            for (int i = 1; i <= 10; i++)
+            for (int i = 0; i <= 10; i++)
             {
                 response.Cookies.Delete("AspNetCore.Identity.ApplicationC" + i);
                 response.Cookies.Delete(AuthConst.CookieName + i);
@@ -39,12 +39,12 @@ namespace FrameWork.ExMethods
                     {
                         string Section = authToken.Substring(0, LimitCount);
                         authToken=authToken.Remove(0, LimitCount);
-                        response.Cookies.Append(AuthConst.CookieName, Section,
+                        response.Cookies.Append(AuthConst.CookieName + Counter, Section,
                             rememberMe ? new CookieOptions() { Expires = DateTime.Now.AddDays(2) } : new CookieOptions());
                     }
                     else
                     {
-                        response.Cookies.Append(AuthConst.CookieName, authToken,
+                        response.Cookies.Append(AuthConst.CookieName +Counter, authToken,
                             rememberMe ? new CookieOptions() { Expires = DateTime.Now.AddDays(2) } : new CookieOptions());
                         authToken = null;
                     }

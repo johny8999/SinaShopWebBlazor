@@ -35,9 +35,9 @@ namespace SinaShop.WebApp.Authentication
         }
 
         //use token
-        public static void UseJWTAuthentication(this IApplicationBuilder app)
+        public static void UseJWTAuthentication(this IApplicationBuilder app,string cookieName,string secretKey)
         {
-            app.UseMiddleware<JwtAuthenticationMiddleware>();
+            app.UseMiddleware<JwtAuthenticationMiddleware>(cookieName,secretKey);
             app.UseAuthentication();
             app.UseAuthorization();
         }

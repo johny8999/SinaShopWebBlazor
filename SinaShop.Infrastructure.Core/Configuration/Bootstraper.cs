@@ -44,7 +44,7 @@ namespace SinaShop.Infrastructure.Core.Configuration
                 services.AddSingleton<ILogger, SeriLogger>();
                 services.AddSingleton<IIPList, IPList>();
                 services.AddSingleton<IEmailSender, GmailSender>();
-                services.AddSingleton<IJwtBuilder, JwtBuilder>();
+                services.AddScoped<IJwtBuilder, JwtBuilder>();
             }
             #endregion Add Services
 

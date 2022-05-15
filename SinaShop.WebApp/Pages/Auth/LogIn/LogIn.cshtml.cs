@@ -10,7 +10,9 @@ using SinaShop.Application.Contract.JwtDTO;
 using SinaShop.Application.Contract.PresentationDTO.ViewInputs;
 using SinaShop.Application.UserAplication;
 using SinaShop.Infrastructure.EfCore.Identity.JWT.JwtBuild;
+using SinaShop.WebApp.Common.Types;
 using SinaShop.WebApp.Common.Utilities.MessageBox;
+using System.Globalization;
 
 namespace SinaShop.WebApp.Pages.Auth.LogIn
 {
@@ -34,7 +36,7 @@ namespace SinaShop.WebApp.Pages.Auth.LogIn
             _JwtBuilder = jwtBuilder;
         }
 
-        public Task<IActionResult> OnGetAsync()
+        public IActionResult OnGetAsync()
         {
             return Page();
         }
@@ -50,10 +52,9 @@ namespace SinaShop.WebApp.Pages.Auth.LogIn
 
                 if (Result.IsSuccess)
                 {
-                    var GetUser = await _UserApplication.FindUserByEmail(input.Email);
-                    var GeneratedToken = await _JwtBuilder.CreateTokenAsync(new InpCreateToken() { UserId=GetUser.Id.ToString()});
+                    var GeneratedToken = await _JwtBuilder.CreateTokenAsync(new InpCreateToken() { UserId=Result.Message});
                     Response.CreateAuthCookie(GeneratedToken,input.RmemberMe);
-                    return _MsgBox.SucssessMsg(_Localizer[Result.Message]);
+                    return new JsResult($"location.href ='/{CultureInfo.CurrentCulture.Parent.Name}'");
                 }
                 else
                     return _MsgBox.FailMsg(_Localizer[Result.Message]);
@@ -61,7 +62,7 @@ namespace SinaShop.WebApp.Pages.Auth.LogIn
 
             }
             catch (ArgumentInvalidException ex)
-            {
+            {   
                 _logger.Debug(ex.Message);
                 return _MsgBox.ModelStateMsg(ex.Message);
             }

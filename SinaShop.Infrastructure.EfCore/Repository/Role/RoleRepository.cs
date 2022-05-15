@@ -9,13 +9,20 @@ namespace SinaShop.Infrastructure.EfCore.Repository.UserRole
     public class RoleRepository : BaseRepository<tblRoles>, IRoleRepository
     {
         private readonly UserManager<tblUsers> _UserManager;
-        public RoleRepository(MainContext context) : base(context) { }
-        public async Task<List<string>> GetRolesAsync(tblUsers user)
+        public RoleRepository(MainContext context, UserManager<tblUsers> userManager) : base(context)
         {
-            var q= await _UserManager.GetRolesAsync(user);
-            return q.ToList();
+            _UserManager = userManager;
         }
-
-
+        public async Task<IList<string>> GetRolesAsync(tblUsers user)
+        {
+            try
+            {
+                return await _UserManager.GetRolesAsync(user);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

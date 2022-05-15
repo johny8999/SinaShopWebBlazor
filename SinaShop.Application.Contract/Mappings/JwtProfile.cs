@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SinaShop.Application.Contract.ApplicationDTO.Role;
 using SinaShop.Application.Contract.ApplicationDTO.UsersDto;
 using SinaShop.Application.Contract.JwtDTO;
 using SinaShop.Application.Contract.PresentationDTO.ViewInputs;
@@ -15,6 +16,7 @@ namespace SinaShop.Application.Contract.Mappings
         public JwtProfile()
         {
             CreateMap<InpCreateToken, InpGetAllDetails>();
+            CreateMap<InpCreateToken, InpGetRolesByUser>();
         }
     }
 }

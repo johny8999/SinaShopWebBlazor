@@ -29,6 +29,7 @@
   <ItemGroup>
     <Folder Include="Common\ExMethod\" />
     <Folder Include="Loggers\" />
+    <Folder Include="Pages\User\" />
   </ItemGroup>
 
   <ItemGroup>

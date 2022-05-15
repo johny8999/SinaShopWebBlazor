@@ -322,12 +322,11 @@ public class UserApplication : IUserApplication
             var Result = await LogInAsync(new InpLgIn() { UserId = qUser.Id.ToString(), Password = input.Password });
 
             if (Result.IsSuccess)
-                return default;
+                return Result;
 
             else
                 return new OperationResult().Failed(Result.Message);
 
-            return new OperationResult().Successed();
         }
         catch (ArgumentInvalidException ex)
         {
@@ -353,8 +352,8 @@ public class UserApplication : IUserApplication
 
             if (quser.IsActive == false)
                 return new OperationResult().Failed(_Localizer["Your Account is disable"]);
-            var Result = await _UserRepository.PasswordSignInAsync(quser, input.Password, false, true);
 
+            var Result = await _UserRepository.PasswordSignInAsync(quser, input.Password, false, true);
             if (Result.Succeeded)
                 return new OperationResult().Successed(quser.Id.ToString());
 

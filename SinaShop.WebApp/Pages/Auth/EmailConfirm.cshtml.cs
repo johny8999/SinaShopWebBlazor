@@ -1,9 +1,9 @@
 using FrameWork.Application.Services.Localizer;
+using FrameWork.ExMethods;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SinaShop.Application.Contract.ApplicationDTO.UsersDto;
 using SinaShop.Application.UserAplication;
-using SinaShop.WebApp.Common.ExMethod;
 
 namespace SinaShop.WebApp.Pages.Auth
 {
@@ -22,19 +22,19 @@ namespace SinaShop.WebApp.Pages.Auth
         {
             if (string.IsNullOrWhiteSpace(token))
                 return BadRequest(_Localizer["Token can not be null"]);
-           var Result= await _UserApplication.EmailConfirmationAsync(new InpEmailConfirmation()
+            var Result = await _UserApplication.EmailConfirmationAsync(new InpEmailConfirmation()
             {
                 Token = token
             });
             if (Result.IsSuccess)
             {
                 Response.DeleteAuthCookie();
-                IsSuccess =true;
+                IsSuccess = true;
                 return Page();
             }
             else
             {
-                IsSuccess=false;
+                IsSuccess = false;
                 return Page();
             }
         }
