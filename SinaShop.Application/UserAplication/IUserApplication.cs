@@ -14,4 +14,6 @@ namespace SinaShop.Application.UserAplication;
     Task<OutGetAllDetails> GetAllDetailsAsync(InpGetAllDetails input);
     Task<OperationResult> LogInByEmailPasswordAsync(InpLoginByEmailPassword input);
     Task<OperationResult> RegisterByEmailPasswordAsync(InpRegisterByEmailPassword Input);
-    }
+    Task<OperationResult> ResetPasswordAsync(InpResetPassword input);
+    Task SignOut();
+}

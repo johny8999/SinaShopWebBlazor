@@ -40,6 +40,7 @@ namespace SinaShop.WebApp.Pages.Auth.LogIn
         {
             return Page();
         }
+
         public async Task<IActionResult> OnPostAsync()
         {
             try

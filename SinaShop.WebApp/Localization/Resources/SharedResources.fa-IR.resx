@@ -198,6 +198,9 @@
   <data name="Sign in" xml:space="preserve">
     <value>ورود</value>
   </data>
+  <data name="Signout" xml:space="preserve">
+    <value>خارج شوید</value>
+  </data>
   <data name="The user has not been finded" xml:space="preserve">
     <value>کابر مورد نطر پیدا نشده است</value>
   </data>

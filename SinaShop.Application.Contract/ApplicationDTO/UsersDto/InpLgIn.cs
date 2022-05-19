@@ -12,6 +12,7 @@ namespace SinaShop.Application.Contract.ApplicationDTO.UsersDto
         public string UserId { get; set; }
         [Display(Name = nameof(Password))]
         [RequiredString]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
     }
 }

@@ -71,7 +71,8 @@
                             <div class="form-group navbar-welcome ">
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                    <span>@Localizer["Welcome"] @User.Identity.Name</span>
+                                    <a href=#>@Localizer["Welcome"] @User.Identity.Name</a> @Localizer["or"]
+                                    <a href="/@CultureInfo.CurrentCulture.Parent.Name/Auth/Signout"><strong>@Localizer["Signout"]</strong></a>
                                 }
                                 else
                                 {

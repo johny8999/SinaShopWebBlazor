@@ -21,5 +21,7 @@ namespace SinaShop.Domain.Users.UserAgg.Contracts
         Task<tblUsers> FindByEmailAsync(string email);
         Task<SignInResult> PasswordSignInAsync(tblUsers user, string password, bool isPersistent, bool lockoutOnFailure);
         Task<string> GeneratePasswordResetTokenAsync(tblUsers user);
+        Task<IdentityResult> ResetPasswordAsync(tblUsers user, string token, string newPassword);
+        Task SignOutAsync();
     }
 }

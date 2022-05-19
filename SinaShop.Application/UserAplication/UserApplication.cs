@@ -9,10 +9,10 @@ using SinaShop.Application.AccessLevel;
 using SinaShop.Application.Contract.ApplicationDTO.AccessLevel;
 using SinaShop.Application.Contract.ApplicationDTO.Result;
 using SinaShop.Application.Contract.ApplicationDTO.UsersDto;
-using SinaShop.Application.Contract.JwtDTO;
 using SinaShop.Domain.Users.UserAgg.Contracts;
 using SinaShop.Domain.Users.UserAgg.Entities;
 using System.Net;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace SinaShop.Application.UserAplication;
 public class UserApplication : IUserApplication
@@ -459,28 +459,29 @@ public class UserApplication : IUserApplication
                     return new OperationResult().Failed("Email not found");
             }
             #endregion Get user
-            
+
             #region Generated Token
             string Token = null;
+            
             {
                 Token = await _UserRepository.GeneratePasswordResetTokenAsync(quser);
-                Token=Token.AesEncpypt(AuthConst.SecretKey);
+                Token = quser.Id + ", " + Token;
+                Token = Token.AesEncpypt(AuthConst.SecretKey);
                 Token = WebUtility.UrlEncode(Token);
             }
             #endregion Generated Token
 
             #region GenerateLink
-            string GenerateLink = null ;
+            string GenerateLink = null;
             {
-                GenerateLink = input.ForgetPasswordUrl;
-                GenerateLink = GenerateLink.Replace("[TOKEN]".ToUpper(), Token);
+                GenerateLink = input.ForgetPasswordUrl.Replace("[TOKEN]".ToUpper(), Token);
             }
             #endregion GenerateLink
 
             #region Generate Email Template
-            string GenerateEmailTemplate = "<a href=[Link]></a>";
+            string GenerateEmailTemplate = $"<a href=\"[Link]\">{_Localizer["ClickMe"]}</a>";
             {
-                GenerateEmailTemplate = GenerateEmailTemplate.Replace("[Link]", Token);
+                GenerateEmailTemplate = GenerateEmailTemplate.Replace("[Link]", GenerateLink);
             }
             #endregion Generate Email Template
 
@@ -494,12 +495,80 @@ public class UserApplication : IUserApplication
         catch (ArgumentInvalidException ex)
         {
             _Logger.Debug(ex);
+            return new  OperationResult().Failed(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            _Logger.Error(ex);
+            return new OperationResult().Failed(_Localizer["Error500"]);
+        }
+    }
+
+    public async Task<OperationResult> ResetPasswordAsync(InpResetPassword input)
+    {
+        try
+
+        {
+            #region Validation
+            {
+                input.CheckModelState(_ServiceProvider);
+            }
+            #endregion Validation
+
+            #region GenerateToken
+            string Token = null;
+            string UserId = null;
+            {
+                Token = input.Token.AesDecrypt(AuthConst.SecretKey);
+                UserId = Token.Split(", ")[0];
+                Token = Token.Split(", ")[1];
+            }
+            #endregion GenerateToken
+
+            #region GenerateUser
+            tblUsers qUser = null;
+            {
+                qUser = await _UserRepository.FindByIdAsync(UserId);
+            }
+            #endregion GenerateUser
+
+            #region Reset password
+            {
+                var Result = await _UserRepository.ResetPasswordAsync(qUser, Token, input.Password);
+                if (Result.Succeeded)
+                    return new OperationResult().Successed(_Localizer["Your password has been changed successly"]);
+
+                else
+                    return new OperationResult().Failed(String.Join(',', Result.Errors.Select(a => a.Description)));
+            }
+            #endregion Reset password
+        }
+        catch (ArgumentInvalidException ex)
+        {
+            _Logger.Debug(ex);
             return null;
         }
         catch (Exception ex)
         {
             _Logger.Error(ex);
             return null;
+        }
+    }
+
+    public async Task SignOut()
+    {
+        try
+        {
+            
+            await _UserRepository.SignOutAsync();
+        }
+        catch (ArgumentInvalidException ex)
+        {
+            _Logger.Debug(ex);
+        }
+        catch (Exception ex)
+        {
+            _Logger.Error(ex);
         }
     }
 }

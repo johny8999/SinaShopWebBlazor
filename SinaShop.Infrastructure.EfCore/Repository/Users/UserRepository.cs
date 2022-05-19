@@ -2,7 +2,6 @@
 using SinaShop.Domain.Users.UserAgg.Contracts;
 using SinaShop.Domain.Users.UserAgg.Entities;
 using SinaShop.Infrastructure.EfCore.Context;
-using System.Threading.Tasks;
 
 namespace SinaShop.Infrastructure.EfCore.Repository.Users
 {
@@ -57,5 +56,15 @@ namespace SinaShop.Infrastructure.EfCore.Repository.Users
         {
             return await _UserManager.GeneratePasswordResetTokenAsync(user);
         }
+        public async Task<IdentityResult> ResetPasswordAsync(tblUsers user, string token, string newPassword)
+        {
+            return await _UserManager.ResetPasswordAsync(user, token, newPassword);
+        }
+
+        public async Task SignOutAsync()
+        {
+            await _SignInManager.SignOutAsync();
+        }
     }
+
 }

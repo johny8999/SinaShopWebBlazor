@@ -1,15 +1,11 @@
-using FrameWork.Infrastructure;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
+using FrameWork.Consts;
 using SinaShop.Infrastructure.Core.Configuration;
 using SinaShop.Infrastructure.Logger.SeriLoger;
 using SinaShop.Infrastructure.Seed.Base.Main;
+using SinaShop.Infrastructure.Services.ReCaptcha;
 using SinaShop.WebApp.Authentication;
 using SinaShop.WebApp.Config;
 using SinaShop.WebApp.Middlewares;
-using FrameWork.Consts;
 
 var builder = WebApplication.CreateBuilder(args);
 WebApplication app = null;
@@ -25,7 +21,7 @@ WebApplication app = null;
     {
         builder.Host.UseSerilog_SqlServer();
     }
-    builder.Services.AddAntiforgery(a=>a.HeaderName.Equals("XSRF-TOKEN"));
+    builder.Services.AddAntiforgery(a => a.HeaderName.Equals("XSRF-TOKEN"));
 
     builder.Services.AddCustomLocalization();
 
@@ -44,6 +40,7 @@ WebApplication app = null;
 
 #region Configure
 {
+    builder.Services.Configure<GoogleCapchaConfig>(builder.Configuration.GetSection("GoogleRecapcha"));
     app = builder.Build();
     if (app.Environment.IsDevelopment())
     {
@@ -60,7 +57,7 @@ WebApplication app = null;
 
     app.UseRouting();
     app.UseCustomLocalization();
-    app.UseJWTAuthentication(AuthConst.CookieName,AuthConst.SecretKey);
+    app.UseJWTAuthentication(AuthConst.CookieName, AuthConst.SecretKey);
 
     app.UseMiddleware<RedirectToValidLangMiddleware>();
     app.UseEndpoints(endpoints =>

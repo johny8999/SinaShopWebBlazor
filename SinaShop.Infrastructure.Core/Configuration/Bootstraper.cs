@@ -26,6 +26,8 @@ using SinaShop.Infrastructure.Seed.Base.Main;
 using SinaShop.Infrastructure.Seed.Base.Role;
 using SinaShop.Infrastructure.Seed.Base.User;
 using SinaShop.Infrastructure.Services.Email;
+using SinaShop.Infrastructure.Services.ReCaptcha;
+using System.Configuration;
 
 namespace SinaShop.Infrastructure.Core.Configuration
 {
@@ -45,6 +47,7 @@ namespace SinaShop.Infrastructure.Core.Configuration
                 services.AddSingleton<IIPList, IPList>();
                 services.AddSingleton<IEmailSender, GmailSender>();
                 services.AddScoped<IJwtBuilder, JwtBuilder>();
+                
             }
             #endregion Add Services
 
