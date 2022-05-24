@@ -7,6 +7,7 @@ namespace SinaShop.Application.UserAplication;
     {
     Task<OperationResult> ChangeUserAccesslevelAsync(InpChangeUserAccesslevel input);
     Task<OperationResult> ChangeUserRolByAccessLevelIdAsync(InpChangeUserRolByAccessLevelId input);
+    Task<OperationResult> EditUser(InpEditUser input);
     Task<OperationResult> EmailConfirmationAsync(InpEmailConfirmation input);
     Task<tblUsers> FindUserByEmail(string Email);
     Task<tblUsers> FindUserById(string Id);
@@ -15,5 +16,5 @@ namespace SinaShop.Application.UserAplication;
     Task<OperationResult> LogInByEmailPasswordAsync(InpLoginByEmailPassword input);
     Task<OperationResult> RegisterByEmailPasswordAsync(InpRegisterByEmailPassword Input);
     Task<OperationResult> ResetPasswordAsync(InpResetPassword input);
-    Task SignOut();
+    
 }

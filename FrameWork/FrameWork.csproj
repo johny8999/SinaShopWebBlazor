@@ -13,4 +13,8 @@
 	  <PackageReference Include="NETCore.Encrypt" Version="2.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\DataAnnotations\Numbers\" />
+  </ItemGroup>
+
 </Project>

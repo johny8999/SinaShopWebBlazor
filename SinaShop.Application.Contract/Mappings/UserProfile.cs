@@ -10,6 +10,7 @@ namespace SinaShop.Application.Contract.Mappings
         {
             CreateMap<viLogIn, InpLoginByEmailPassword>();
             CreateMap<viForgetPassword, InpForgetPassword>();
+            CreateMap<viEditUser, InpEditUser>();
         }
     }
 }

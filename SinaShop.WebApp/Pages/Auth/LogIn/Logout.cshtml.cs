@@ -15,14 +15,12 @@ namespace SinaShop.WebApp.Pages.Auth.LogIn
             _UserApplication = userApplication;
         }
 
-        public async Task<IActionResult > OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
             try
             {
-                Response.DeleteAuthCookie();
-                await _UserApplication.SignOut();
-                return Page();
-                //return RedirectToPage($"/{CultureInfo.CurrentCulture.Parent.Name}");
+               Response.DeleteAuthCookie();
+                return Redirect($"/{CultureInfo.CurrentCulture.Parent.Name}");
             }
             catch (Exception ex)
             {

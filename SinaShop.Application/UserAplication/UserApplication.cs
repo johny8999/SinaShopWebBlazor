@@ -462,7 +462,7 @@ public class UserApplication : IUserApplication
 
             #region Generated Token
             string Token = null;
-            
+
             {
                 Token = await _UserRepository.GeneratePasswordResetTokenAsync(quser);
                 Token = quser.Id + ", " + Token;
@@ -495,7 +495,7 @@ public class UserApplication : IUserApplication
         catch (ArgumentInvalidException ex)
         {
             _Logger.Debug(ex);
-            return new  OperationResult().Failed(ex.Message);
+            return new OperationResult().Failed(ex.Message);
         }
         catch (Exception ex)
         {
@@ -555,21 +555,49 @@ public class UserApplication : IUserApplication
         }
     }
 
-    public async Task SignOut()
+    public async Task<OperationResult> EditUser(InpEditUser input)
     {
         try
         {
-            
-            await _UserRepository.SignOutAsync();
+            #region Validation
+            {
+                input.CheckModelState(_ServiceProvider);
+            }
+            #endregion Validation
+
+            #region EditCurrentUser
+            {
+                var User = await _UserRepository.FindByIdAsync(input.UserId);
+
+                if (User == null)
+                    return new OperationResult().Failed(_Localizer["UserIncorrect"]);
+
+                if (!User.IsActive)
+                    return new OperationResult().Failed(_Localizer["User has been blocked"]);
+
+                if (!User.EmailConfirmed)
+                    return new OperationResult().Failed(_Localizer["Email must be Confirmed"]);
+
+                User.Email = input.Email;
+                User.Fullname = input.FullName;
+                User.PhoneNumber = input.PhoneNumber;
+                User.UserName = input.UserName;
+                await _UserRepository.UpdateAsync(User);
+            }
+            #endregion EditCurrentUser
+            return new OperationResult().Successed(_Localizer["Your Accound Has been Updated"]);
         }
         catch (ArgumentInvalidException ex)
         {
             _Logger.Debug(ex);
+            return new OperationResult().Failed(ex.Message);
         }
         catch (Exception ex)
         {
             _Logger.Error(ex);
+            return new OperationResult().Failed(_Localizer["Error500"]);
         }
     }
+
 }
 
