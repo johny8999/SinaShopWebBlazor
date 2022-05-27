@@ -27,7 +27,9 @@ WebApplication app = null;
 
     builder.Services.AddRazorPage()
             .AddCustomViewLocalization()
-            .AddCustomDataAnnotationLocalization(builder.Services);
+            .AddCustomDataAnnotationLocalization(builder.Services)
+            .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = 
+                new Newtonsoft.Json.Serialization.DefaultContractResolver());
 
     builder.Services.Config();
     builder.Services.AddInject();
@@ -35,6 +37,7 @@ WebApplication app = null;
 
     builder.Services.AddCustomIdentity();
     builder.Services.AddJwtAuthentication();
+    builder.Services.AddKendo();
 }
 #endregion ConfigureServices
 

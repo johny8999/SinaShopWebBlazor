@@ -1,5 +1,6 @@
 using AutoMapper;
 using FrameWork.Application.Services.Localizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SinaShop.Application.Contract.ApplicationDTO.UsersDto;
@@ -8,10 +9,10 @@ using SinaShop.Application.UserAplication;
 using SinaShop.WebApp.Common.Types;
 using SinaShop.WebApp.Common.Utilities.MessageBox;
 using System.Globalization;
-using System.Security.Claims;
 
 namespace SinaShop.WebApp.Pages.User
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly IUserApplication _UserApplication;
@@ -29,22 +30,19 @@ namespace SinaShop.WebApp.Pages.User
 
         public async Task<IActionResult> OnGetAsync()
         {
-            if (User.Identity.IsAuthenticated)
+            var UserId = User.Identities.Select(a => a.Claims).First()
+                .First().Value;
+            var CurrentUser = await _UserApplication.FindUserById(UserId);
+            input = new viEditUser()
             {
-                var UserId = User.Identities.Select(a => a.Claims).First()
-                    .First().Value;
-                var CurrentUser = await _UserApplication.FindUserById(UserId);
-                input = new viEditUser()
-                {
-                    UserId = UserId,
-                    Email = CurrentUser.Email,
-                    FullName = CurrentUser.Fullname,
-                    PhoneNumber = CurrentUser.PhoneNumber,
-                    UserName = CurrentUser.UserName
-                };
+                UserId = UserId,
+                Email = CurrentUser.Email,
+                FullName = CurrentUser.Fullname,
+                PhoneNumber = CurrentUser.PhoneNumber,
+                UserName = CurrentUser.UserName
+            };
 
-                return Page();
-            }
+            return Page();
             return Redirect($"/{CultureInfo.CurrentCulture.Parent.Name}/Auth/LogIn");
         }
 

@@ -67,7 +67,8 @@ namespace SinaShop.Infrastructure.EfCore.Identity.JWT.JwtBuild
                     Claims.AddRange(new List<Claim>
                     {
                         new Claim(ClaimTypes.NameIdentifier,qUser.Id),
-                        new Claim(ClaimTypes.Name,qUser.FullName),
+                        new Claim(ClaimTypes.GivenName,qUser.FullName),
+                        new Claim(ClaimTypes.Name,qUser.Email),
                         new Claim(ClaimTypes.Email,qUser.Email),
                         new Claim(ClaimTypes.MobilePhone,qUser.PhoneNumber??""),
                         new Claim("AccessLevel",qUser.AccessLevelTitle),
