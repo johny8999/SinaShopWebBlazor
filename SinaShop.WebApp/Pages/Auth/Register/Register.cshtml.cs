@@ -5,12 +5,12 @@ using FrameWork.Infrastructure;
 using ILogger = FrameWork.Infrastructure.ILogger;
 using SinaShop.Application.Contract.PresentationDTO.ViewInputs;
 using SinaShop.WebApp.Common.Utilities.MessageBox;
-using FrameWork.ExMethods;
 using FrameWork.Application.Services.Localizer;
 using SinaShop.Domain.Users.UserAgg.Contracts;
 using SinaShop.Application.UserAplication;
 using SinaShop.Application.Contract.ApplicationDTO.UsersDto;
 using FrameWork.Consts;
+using FrameWork.Common.ExMethods;
 
 namespace SinaShop.WebApp.Pages.Auth.Register
 {

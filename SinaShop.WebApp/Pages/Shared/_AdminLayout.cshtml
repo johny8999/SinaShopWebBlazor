@@ -184,7 +184,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                         <div class="info">
                             <a href="#" class="d-block">
-                               @User.Claims.Where(a=>a.Type==System.Security.Claims.ClaimTypes.GivenName).Select(a=>a.Value).Single()
+                               @User.Claims.Where(a=>a.Type==System.Security.Claims.ClaimTypes.GivenName).Select(a=>a.Value).Single();
                             </a>
                         </div>
                     </div>

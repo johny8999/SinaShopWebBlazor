@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SinaShop.Domain.Region.LanguageAgg.Entities;
-using FrameWork.ExMethods;
 using Microsoft.EntityFrameworkCore;
 using FrameWork.Infrastructure;
 using FrameWork.Application.Arguments;
 using SinaShop.Application.Contract.ApplicationDTO.Languages;
 using SinaShop.Application.Contract.ApplicationDTO.Result;
+using FrameWork.Common.ExMethods;
 
 namespace SinaShop.Application.Languages
 {

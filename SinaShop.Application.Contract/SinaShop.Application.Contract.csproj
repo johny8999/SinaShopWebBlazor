@@ -11,8 +11,4 @@
     <ProjectReference Include="..\FrameWork\FrameWork.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="PresentationDTO\ViewModels\" />
-  </ItemGroup>
-
 </Project>

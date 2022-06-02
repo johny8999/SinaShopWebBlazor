@@ -1,6 +1,6 @@
 ﻿using FrameWork.Application.Arguments;
 using FrameWork.Application.Services.Localizer;
-using FrameWork.ExMethods;
+using FrameWork.Common.ExMethods;
 using FrameWork.Infrastructure;
 using SinaShop.Application.Contract.ApplicationDTO.Role;
 using SinaShop.Application.UserAplication;

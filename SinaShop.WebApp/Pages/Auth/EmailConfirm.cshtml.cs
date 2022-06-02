@@ -1,5 +1,5 @@
 using FrameWork.Application.Services.Localizer;
-using FrameWork.ExMethods;
+using FrameWork.Common.ExMethods;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SinaShop.Application.Contract.ApplicationDTO.UsersDto;

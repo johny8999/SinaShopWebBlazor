@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using FrameWork.Consts;
 using static System.Collections.Specialized.BitVector32;
 
-namespace FrameWork.ExMethods
+namespace FrameWork.Common.ExMethods
 {
     public static class ResponseEx
     {
@@ -38,13 +38,13 @@ namespace FrameWork.ExMethods
                     if (authToken.Length > LimitCount)
                     {
                         string Section = authToken.Substring(0, LimitCount);
-                        authToken=authToken.Remove(0, LimitCount);
+                        authToken = authToken.Remove(0, LimitCount);
                         response.Cookies.Append(AuthConst.CookieName + Counter, Section,
                             rememberMe ? new CookieOptions() { Expires = DateTime.Now.AddDays(2) } : new CookieOptions());
                     }
                     else
                     {
-                        response.Cookies.Append(AuthConst.CookieName +Counter, authToken,
+                        response.Cookies.Append(AuthConst.CookieName + Counter, authToken,
                             rememberMe ? new CookieOptions() { Expires = DateTime.Now.AddDays(2) } : new CookieOptions());
                         authToken = null;
                     }

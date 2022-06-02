@@ -1,4 +1,4 @@
-﻿using FrameWork.ExMethods;
+﻿using FrameWork.Common.ExMethods;
 using FrameWork.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using SinaShop.Domain.Region.LanguageAgg.Contract;

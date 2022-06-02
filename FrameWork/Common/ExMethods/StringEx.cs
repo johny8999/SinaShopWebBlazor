@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace FrameWork.ExMethods
+namespace FrameWork.Common.ExMethods
 {
     public static class StringEx
     {
@@ -35,7 +35,7 @@ namespace FrameWork.ExMethods
         /// <param name="key">کلید رمز نگاری</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public static string AesEncpypt(this string input,string key)
+        public static string AesEncpypt(this string input, string key)
         {
             if (string.IsNullOrWhiteSpace(input))
                 throw new ArgumentException($"'{nameof(input)}' cannot be null or whitespace.", nameof(input));

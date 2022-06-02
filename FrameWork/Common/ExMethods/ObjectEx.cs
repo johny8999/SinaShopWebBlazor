@@ -1,7 +1,7 @@
 ﻿using FrameWork.Application.Arguments;
 using System.ComponentModel.DataAnnotations;
 
-namespace FrameWork.ExMethods
+namespace FrameWork.Common.ExMethods
 {
     public static class ObjectEx
     {

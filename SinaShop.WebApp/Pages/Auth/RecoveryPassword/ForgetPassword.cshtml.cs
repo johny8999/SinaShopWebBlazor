@@ -1,7 +1,7 @@
 using AutoMapper;
 using FrameWork.Application.Services.Localizer;
+using FrameWork.Common.ExMethods;
 using FrameWork.Consts;
-using FrameWork.ExMethods;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SinaShop.Application.Contract.ApplicationDTO.UsersDto;

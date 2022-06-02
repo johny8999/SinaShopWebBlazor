@@ -1,8 +1,8 @@
 ﻿using FrameWork.Application.Arguments;
 using FrameWork.Application.Services.Email;
 using FrameWork.Application.Services.Localizer;
+using FrameWork.Common.ExMethods;
 using FrameWork.Consts;
-using FrameWork.ExMethods;
 using FrameWork.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using SinaShop.Application.AccessLevel;

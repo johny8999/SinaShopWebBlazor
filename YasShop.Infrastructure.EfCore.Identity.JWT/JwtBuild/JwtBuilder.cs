@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using FrameWork.Application.Arguments;
+using FrameWork.Common.ExMethods;
 using FrameWork.Consts;
-using FrameWork.ExMethods;
 using FrameWork.Infrastructure;
 using Microsoft.IdentityModel.Tokens;
 using SinaShop.Application.Contract.ApplicationDTO.Role;

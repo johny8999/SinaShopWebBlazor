@@ -1,4 +1,4 @@
-using FrameWork.ExMethods;
+using FrameWork.Common.ExMethods;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SinaShop.Application.UserAplication;

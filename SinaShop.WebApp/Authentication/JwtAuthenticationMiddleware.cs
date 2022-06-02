@@ -1,5 +1,5 @@
-﻿using FrameWork.Consts;
-using FrameWork.ExMethods;
+﻿using FrameWork.Common.ExMethods;
+using FrameWork.Consts;
 
 namespace SinaShop.WebApp.Authentication
 {
