@@ -8,8 +8,7 @@ namespace SinaShop.Domain.Users.UserAgg.Entities
     public class tblUsers : IdentityUser<Guid>, IEntity
     {
         public Guid AccessLevelId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Fullname { get; set; }
         public bool IsActive { get; set; }
         public DateTime Date { get; set; }
 

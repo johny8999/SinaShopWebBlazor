@@ -15,5 +15,6 @@ namespace SinaShop.Domain.Users.AccessLevelAgg.Entities
 
 
         public virtual ICollection<tblUsers> tblUsers { get; set; }
+        public virtual ICollection<tblAccessLevelRoles> tblAccessLevelRoles { get; set; }
     }
 }

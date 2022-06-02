@@ -23,9 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SinaShop.Infrastructure.EfC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SinaShop.Infrastructure.EfCore.Identity.JWT", "YasShop.Infrastructure.EfCore.Identity.JWT\SinaShop.Infrastructure.EfCore.Identity.JWT.csproj", "{01BC8F0B-EB79-4967-8CE9-B742F6446882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SinaShop.Infrastructure.Seed", "SinaShop.Infrastructure.Seed\SinaShop.Infrastructure.Seed.csproj", "{1AC4FA63-A176-4755-A447-261613961CF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SinaShop.Infrastructure.Seed", "SinaShop.Infrastructure.Seed\SinaShop.Infrastructure.Seed.csproj", "{1AC4FA63-A176-4755-A447-261613961CF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SinaShop.Infrastructure.Logger.SeriLoger", "SinaShop.Infrastructure.Logger.SeriLoger\SinaShop.Infrastructure.Logger.SeriLoger.csproj", "{5BF46486-0DE3-4B3A-8194-A3CE3B76BC98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SinaShop.Infrastructure.Logger.SeriLoger", "SinaShop.Infrastructure.Logger.SeriLoger\SinaShop.Infrastructure.Logger.SeriLoger.csproj", "{5BF46486-0DE3-4B3A-8194-A3CE3B76BC98}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SinaShop.Infrastructure.Services", "SinaShop.Infrastructure.Services\SinaShop.Infrastructure.Services.csproj", "{8CDA71E3-59A0-4E1C-AF84-A440D142419A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{5BF46486-0DE3-4B3A-8194-A3CE3B76BC98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BF46486-0DE3-4B3A-8194-A3CE3B76BC98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BF46486-0DE3-4B3A-8194-A3CE3B76BC98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CDA71E3-59A0-4E1C-AF84-A440D142419A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CDA71E3-59A0-4E1C-AF84-A440D142419A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CDA71E3-59A0-4E1C-AF84-A440D142419A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CDA71E3-59A0-4E1C-AF84-A440D142419A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

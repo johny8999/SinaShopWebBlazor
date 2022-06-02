@@ -1,13 +1,14 @@
 ﻿using FrameWork.Domain;
 using Microsoft.EntityFrameworkCore;
+using SinaShop.Infrastructure.EfCore.Context;
 
 namespace SinaShop.Infrastructure.EfCore.Repository
 {
     public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
     {
-        private readonly DbContext _context;
+        private readonly MainContext _context;
 
-        public BaseRepository(DbContext context)
+        public BaseRepository(MainContext context)
         {
             _context = context;
             DbEntities = _context.Set<TEntity>();

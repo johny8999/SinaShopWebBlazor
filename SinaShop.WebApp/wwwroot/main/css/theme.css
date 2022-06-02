@@ -13,6 +13,10 @@
     [3] Minxin Triangle
    
 ==============================================*/
+.direction-English {
+    direction: ltr !important
+}
+
 .no-margin {
   margin: 0 !important; }
 
@@ -4051,10 +4055,10 @@ h2.title-category {
 /**************************************************************
 	Style  Header 1
 **************************************************************/
-.type_1 .header-top-right ul.top-link > li.account {
+.type_1 .header-top-options ul.top-link > li.account {
   background: #F4A137;
   border-right: 1px solid #F4A137; }
-.type_1 .header-top-right ul.top-link > li:hover {
+.type_1 .header-top-options ul.top-link > li:hover {
   background: #F4A137; }
 .type_1 #sosearchpro .button-search:hover {
   background: #F4A137;
@@ -4063,7 +4067,7 @@ h2.title-category {
 /**************************************************************
 	Style  Header 2 
 **************************************************************/
-.type_2 .header-top-right ul.top-link > li:hover {
+.type_2 .header-top-options ul.top-link > li:hover {
   background: #F4A137; }
 .type_2 .horizontal ul.megamenu > li.active > a,
 .type_2 .horizontal ul.megamenu > li.home > a,
@@ -4076,7 +4080,7 @@ h2.title-category {
 /**************************************************************
 	Style  Header  3
 **************************************************************/
-.type_3 .header-top-right ul.top-link > li:hover {
+.type_3 .header-top-options ul.top-link > li:hover {
   background: #F4A137; }
 .type_3 .horizontal ul.megamenu > li.active > a,
 .type_3 .horizontal ul.megamenu > li.home > a,
@@ -4094,7 +4098,7 @@ h2.title-category {
 /**************************************************************
 	Style  Header  4
 **************************************************************/
-.type_4 .header-top-right ul.top-link > li:hover {
+.type_4 .header-top-options ul.top-link > li:hover {
   background: #F4A137; }
 .type_4 .horizontal ul.megamenu > li.active > a,
 .type_4 .horizontal ul.megamenu > li.home > a,

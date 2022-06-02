@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Pages\Home\Index.cshtml~RF1056b95.TMP" />
   </ItemGroup>
 
@@ -16,6 +20,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2022.1.301" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +29,12 @@
 
   <ItemGroup>
     <Folder Include="Loggers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\main\js\sweetalert\sweetalert.js" />
+    <None Include="wwwroot\main\js\sweetalert\sweetalert.min.js" />
   </ItemGroup>
 
 </Project>

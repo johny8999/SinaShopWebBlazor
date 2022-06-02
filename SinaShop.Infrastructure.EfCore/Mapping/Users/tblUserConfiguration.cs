@@ -14,8 +14,7 @@ namespace SinaShop.Infrastructure.EfCore.Mapping.Users
     {
         public void Configure(EntityTypeBuilder<tblUsers> builder)
         {
-            builder.Property(conf => conf.FirstName).IsRequired().HasMaxLength(100);
-            builder.Property(a => a.LastName).IsRequired().HasMaxLength(100);
+            builder.Property(conf => conf.Fullname).IsRequired().HasMaxLength(100);
             builder.Property(a => a.AccessLevelId).HasMaxLength(450);//foreignkey
 
             builder.HasOne(a => a.tblAccessLevel)

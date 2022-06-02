@@ -1,5 +1,5 @@
-﻿using SinaShop.Application.Contract.Languages;
-using SinaShop.Application.Contract.Result;
+﻿using SinaShop.Application.Contract.ApplicationDTO.Languages;
+using SinaShop.Application.Contract.ApplicationDTO.Result;
 
 namespace SinaShop.Application.Languages
 {
@@ -8,6 +8,6 @@ namespace SinaShop.Application.Languages
         Task<OperationResult> AddLanguageAsync(InpAddLanguage Input);
         Task<string> GetCodeByAbbrAsync(string Abbr);
         Task<List<OutSiteLanguageCache>> GetAllLanguageSiteLangAsync();
-
+        Task<bool?> IsValidAbbrForSiteLangAsync(InpIsValidAbbrForSiteLang input);
     }
 }

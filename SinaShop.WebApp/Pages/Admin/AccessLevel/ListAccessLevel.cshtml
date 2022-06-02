@@ -1,0 +1,51 @@
+﻿@page "/{Culture}/Admin/AccessLevel/List"
+
+@model SinaShop.WebApp.Pages.Admin.AccessLevel.ListAccessLevelModel
+@{
+    Layout = "~/Pages/shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">@Localizer["Access level list"]</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <partial name="~/Pages/Shared/Partial/P_AdminBreadCrumb.cshtml" model='new List<viAdminBreadCrumb>(){
+                        new viAdminBreadCrumb(){Title=@Localizer["Home"],Url=$"/{@CultureInfo.CurrentCulture.Parent.Name}"},
+                        new viAdminBreadCrumb(){Title=@Localizer["Admin Panel"],Url=$"/{@CultureInfo.CurrentCulture.Parent.Name}/Admin/Index"},
+                        new viAdminBreadCrumb(){Title=@Localizer["Access level list"],Url=null},
+                    }' ) />
+
+
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="k-lang">
+                                @(Html.Kendo()
+                                      .Grid<vmListAccessLevelModel>()
+                                      .Name("ListAccessLevel")
+                                      
+                                )
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+</div>

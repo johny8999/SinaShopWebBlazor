@@ -26,6 +26,5 @@ namespace FrameWork.Domain
         Task<TEntity> GetById(params object[] Id);
 
         Task<int> SaveChangeAsync();
-
     }
 }

@@ -1,37 +1,35 @@
-
-using FrameWork.Infrastructure;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using FrameWork.Consts;
 using SinaShop.Infrastructure.Core.Configuration;
 using SinaShop.Infrastructure.Logger.SeriLoger;
 using SinaShop.Infrastructure.Seed.Base.Main;
+using SinaShop.Infrastructure.Services.ReCaptcha;
 using SinaShop.WebApp.Authentication;
 using SinaShop.WebApp.Config;
-using System;
-
+using SinaShop.WebApp.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 WebApplication app = null;
 
 #region ConfigureServices
 {
-    builder.Host.ConfigureWebHost(WebBuilder => {
-        if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == Environments.Development)
-        {
-            WebBuilder.UseSerilog_Console();
-        }
-        else
-        {
-            WebBuilder.UseSerilog_SqlServer();
-        }
-    });
+
+    if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == Environments.Development)
+    {
+        builder.Host.UseSerilog_File();
+    }
+    else
+    {
+        builder.Host.UseSerilog_SqlServer();
+    }
+    builder.Services.AddAntiforgery(a => a.HeaderName.Equals("XSRF-TOKEN"));
 
     builder.Services.AddCustomLocalization();
 
     builder.Services.AddRazorPage()
             .AddCustomViewLocalization()
-            .AddCustomDataAnnotationLocalization(builder.Services);
+            .AddCustomDataAnnotationLocalization(builder.Services)
+            .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = 
+                new Newtonsoft.Json.Serialization.DefaultContractResolver());
 
     builder.Services.Config();
     builder.Services.AddInject();
@@ -39,11 +37,13 @@ WebApplication app = null;
 
     builder.Services.AddCustomIdentity();
     builder.Services.AddJwtAuthentication();
+    builder.Services.AddKendo();
 }
 #endregion ConfigureServices
 
 #region Configure
 {
+    builder.Services.Configure<GoogleCapchaConfig>(builder.Configuration.GetSection("GoogleRecapcha"));
     app = builder.Build();
     if (app.Environment.IsDevelopment())
     {
@@ -55,14 +55,14 @@ WebApplication app = null;
         app.UseHsts();
     }
 
-    app.UseHttpsRedirection();
+    //app.UseHttpsRedirection();
     app.UseStaticFiles();
 
     app.UseRouting();
     app.UseCustomLocalization();
-    app.UseJWTAuthentication();
+    app.UseJWTAuthentication(AuthConst.CookieName, AuthConst.SecretKey);
 
-
+    app.UseMiddleware<RedirectToValidLangMiddleware>();
     app.UseEndpoints(endpoints =>
     {
 
