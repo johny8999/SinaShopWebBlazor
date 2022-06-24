@@ -18,4 +18,4 @@ namespace SinaShop.Application.Contract.ApplicationDTO.AccessLevel
         public short Take { get; set; }
     }
 }
-}
+
