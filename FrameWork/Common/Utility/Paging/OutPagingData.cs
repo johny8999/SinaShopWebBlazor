@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FrameWork.Utility.Paging
+﻿namespace FrameWork.Common.Utility.Paging
 {
     public class OutPagingData
     {
         public OutPagingData()
         {
-                
+
         }
         public OutPagingData(int Take)
         {

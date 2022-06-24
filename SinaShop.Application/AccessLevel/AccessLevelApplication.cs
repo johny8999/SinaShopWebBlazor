@@ -1,6 +1,7 @@
 ﻿using FrameWork.Application.Arguments;
 using FrameWork.Application.Services.Localizer;
 using FrameWork.Common.ExMethods;
+using FrameWork.Common.Utility.Paging;
 using FrameWork.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using SinaShop.Application.Contract.ApplicationDTO.AccessLevel;
@@ -91,5 +92,50 @@ namespace SinaShop.Application.AccessLevel
                 return null;
             }
         }
+        public async Task<(OutPagingData PageData, List<OutGetAccessLevelForAdmin> LstItems)> GetAccessLevelForAdminAsync(InpGetAccessLevelForAdmin input)
+        {
+            try
+            {
+                #region Validation
+                {
+                    input.CheckModelState(_ServiceProvider);
+                }
+                #endregion Validation
+
+                #region GetAccessLevel
+                IQueryable<OutGetAccessLevelForAdmin> qData = null;
+                {
+                    qData = _AccessLevelRepository.GetNoTraking
+                                    .Select(a => new OutGetAccessLevelForAdmin
+                                    {
+                                        Id = a.Id.ToString(),
+                                        Name = a.Name,
+                                        UserCount = a.tblUsers.Count()
+                                    });
+
+                }
+                #endregion GetAccessLevel
+
+                #region PagingDate
+                OutPagingData PagingData = null;
+                {
+                    int CountAllItem = await qData.CountAsync();
+                    PagingData = FrameWork.Common.Utility.Paging.PagingData.Calculate(CountAllItem, input.Page, input.Take);
+                }
+                #endregion PagingDate
+                return (PagingData, await (qData.OrderBy(a => a.Name).Skip(PagingData.Skip).Take(PagingData.Take)).ToListAsync());
+            }
+            catch (ArgumentInvalidException ex)
+            {
+                _Logger.Debug(ex);
+                return (null, null);
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error(ex);
+                return (null, null);
+            }
+        }
+
     }
 }

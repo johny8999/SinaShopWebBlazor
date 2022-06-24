@@ -1,3 +1,4 @@
+using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SinaShop.Application.Contract.PresentationDTO.ViewInputs;
@@ -14,6 +15,11 @@ namespace SinaShop.WebApp.Pages.Admin.AccessLevel
         public async Task<IActionResult> OnPostAsync()
         {
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostReadDataAsync([DataSourceRequest] DataSourceRequest Request)
+        {
+
         }
 
         public viListAccessLevelModel input { get; set; }
