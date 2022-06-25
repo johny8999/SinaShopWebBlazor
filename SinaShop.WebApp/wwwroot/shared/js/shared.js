@@ -1,5 +1,4 @@
-﻿
-window.confirm = function (_text, _title, _yesAction = function () { }) {
+﻿window.confirm = function (_text, _title, _yesAction = function () { }) {
     swal.fire({
         title: _title,
         text: _text,
@@ -99,8 +98,8 @@ function sendData(_Url, _data, _CallBack = function (res) { }) {
 
 
 function removeData(_url, _data = {}) {
-    confirm(_deleteMsg, "", function () {
-        sendData(_url, _data)
+    confirm(_deleteMsg, "", function (){
+        sendData(_url,_data)
     });
 }
 

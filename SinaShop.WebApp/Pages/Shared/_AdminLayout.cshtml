@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {
         <link rel="stylesheet" href="/lib/KendoUI/css/kendo.ltr.min.css">
     }
-
+    <link href="/main/js/sweetalert/sweetalert.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/admin/css/custom-style.css">
     <script src="/lib/jquery/jquery.min.js"></script>
     <!-- Kendo -->
@@ -42,6 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="/lib/KendoUI/js/kendo.aspnetmvc.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
+    @Html.AntiForgeryToken()
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
@@ -184,7 +185,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                         <div class="info">
                             <a href="#" class="d-block">
-                               @User.Claims.Where(a=>a.Type==System.Security.Claims.ClaimTypes.GivenName).Select(a=>a.Value).Single();
+                                @User.Claims.Where(a=>a.Type==System.Security.Claims.ClaimTypes.GivenName).Select(a=>a.Value).Single()
                             </a>
                         </div>
                     </div>
@@ -275,6 +276,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Bootstrap 4 -->
     <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
+    <script type="text/javascript" src="/main/js/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript" src="/fa/Custom.js"></script>
     <script src="/admin/js/adminlte.min.js"></script>
+    <script src="/shared/js/shared.js"></script>
+
 </body>
 </html>

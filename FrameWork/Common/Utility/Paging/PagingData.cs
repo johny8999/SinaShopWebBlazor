@@ -7,7 +7,6 @@
             try
             {
                 int Skip = 0;
-                int Take = 0;
                 int CountPage = 5;
                 int CountAllPage = 0;
 
@@ -20,7 +19,7 @@
                 take = countAllItem < take ? (int)countAllItem : take;
                 page = CountAllPage < page ? CountAllPage : page;
 
-                Skip = (Take * page) - Take;
+                Skip = (take * page) - take;
                 Skip = Skip < 0 ? 0 : Skip;
 
                 int StartPage = (page - CountPage) <= 0 ? 1 : page - CountPage;
@@ -31,7 +30,7 @@
                     CountAllItem = countAllItem,
                     CountAllPAge = CountAllPage,
                     Page = page,
-                    Take = Take,
+                    Take = take,
                     Skip = Skip,
                     StartPage = StartPage,
                     EndtPage = EndPage

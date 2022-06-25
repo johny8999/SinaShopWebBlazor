@@ -126,6 +126,9 @@
   <data name="AccessDeniedMsg" xml:space="preserve">
     <value>دسترسی غیر مجاز</value>
   </data>
+  <data name="AccessLevel has User" xml:space="preserve">
+    <value>سطح دسترسی دارای کاربرانی میباشد و امکان حذف آن وجود ندارد</value>
+  </data>
   <data name="Admin Panel" xml:space="preserve">
     <value>پنل مدیریت</value>
   </data>
@@ -140,6 +143,15 @@
   </data>
   <data name="CountUser" xml:space="preserve">
     <value>تعداد کاربر</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="deleteMsg" xml:space="preserve">
+    <value>آیا مطمین هستید؟</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>ویرایش</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>ایمیل</value>
@@ -186,6 +198,9 @@
   <data name="IAgree" xml:space="preserve">
     <value>موافقت با قوانین</value>
   </data>
+  <data name="Id not Found" xml:space="preserve">
+    <value>شناسه نامعتبر است</value>
+  </data>
   <data name="If you already have an account with us, please click" xml:space="preserve">
     <value>اگر ثبت نام کرده اید لطفا روی &lt;a href="{0}"&gt;صحفه ورود&lt;/a&gt; کلیک کنید</value>
   </data>
@@ -207,8 +222,14 @@
   <data name="MyAccount" xml:space="preserve">
     <value>پروفایل من</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>نام</value>
+  </data>
   <data name="Next" xml:space="preserve">
     <value>بعدی</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>خیر</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>باشه</value>
@@ -230,6 +251,9 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>قبلی</value>
+  </data>
+  <data name="RangeMsg" xml:space="preserve">
+    <value>{0} باید بین {1} تا {2} باشد</value>
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>بارگذاری مجدد</value>
@@ -273,11 +297,17 @@
   <data name="Token is invalid" xml:space="preserve">
     <value>لینک منقضی شده است</value>
   </data>
+  <data name="UserCount" xml:space="preserve">
+    <value>تعدا د کاربران</value>
+  </data>
   <data name="Username or password is incorect" xml:space="preserve">
     <value>ایمیل یا رمز عبور اشتباه است</value>
   </data>
   <data name="Welcome to market" xml:space="preserve">
     <value>به فروشگاه خودتان خوش آمدید</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>بله</value>
   </data>
   <data name="your Account is disable" xml:space="preserve">
     <value>حساب کاربری شما غیر فعال است</value>

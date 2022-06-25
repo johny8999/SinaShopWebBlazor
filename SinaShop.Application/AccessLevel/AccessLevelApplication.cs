@@ -5,12 +5,9 @@ using FrameWork.Common.Utility.Paging;
 using FrameWork.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using SinaShop.Application.Contract.ApplicationDTO.AccessLevel;
+using SinaShop.Application.Contract.ApplicationDTO.Result;
 using SinaShop.Domain.Users.AccessLevelAgg.Contract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SinaShop.Domain.Users.AccessLevelAgg.Entities;
 
 namespace SinaShop.Application.AccessLevel
 {
@@ -35,7 +32,7 @@ namespace SinaShop.Application.AccessLevel
             try
             {
                 input.CheckModelState(_ServiceProvider);
-                 return _AccessLevelRepository.GetNoTraking.Where(a => a.Name == input.Name).SingleOrDefault().Id.ToString();
+                return _AccessLevelRepository.GetNoTraking.Where(a => a.Name == input.Name).SingleOrDefault().Id.ToString();
             }
             catch (ArgumentException ex)
             {
@@ -57,8 +54,8 @@ namespace SinaShop.Application.AccessLevel
                 #endregion Validation
 
                 return await _AccessLevelRoleRepository.GetNoTraking
-                    .Where(a => a.AccessLevelId==input.AccessLevelId.ToGuid())
-                    .Select(a=>a.RoleId.ToString() ).ToListAsync();
+                    .Where(a => a.AccessLevelId == input.AccessLevelId.ToGuid())
+                    .Select(a => a.RoleId.ToString()).ToListAsync();
             }
             catch (ArgumentException ex)
             {
@@ -117,13 +114,14 @@ namespace SinaShop.Application.AccessLevel
                 #endregion GetAccessLevel
 
                 #region PagingDate
-                OutPagingData PagingData = null;
+                OutPagingData _PagingData = null;
                 {
                     int CountAllItem = await qData.CountAsync();
-                    PagingData = FrameWork.Common.Utility.Paging.PagingData.Calculate(CountAllItem, input.Page, input.Take);
+                    _PagingData = PagingData.Calculate(CountAllItem, input.Page, input.Take);
                 }
                 #endregion PagingDate
-                return (PagingData, await (qData.OrderBy(a => a.Name).Skip(PagingData.Skip).Take(PagingData.Take)).ToListAsync());
+                var Result = await (qData.OrderBy(a => a.Name).Skip(_PagingData.Skip).Take(_PagingData.Take)).ToListAsync();
+                return (_PagingData, Result);
             }
             catch (ArgumentInvalidException ex)
             {
@@ -136,6 +134,47 @@ namespace SinaShop.Application.AccessLevel
                 return (null, null);
             }
         }
+        public async Task<OperationResult> DeleteAccessLevelAsync(InputDeleteAccessLevel input)
+        {
+            try
+            {
+                #region Validation
+                {
+                    input.CheckModelState(_ServiceProvider);
+                }
+                #endregion Validation
 
+                #region GetAccessLevel
+                tblAccessLevel tAccessLevel = null;
+                {
+                    tAccessLevel = await _AccessLevelRepository.GetById(input.Id);
+
+                    if (tAccessLevel is null)
+                        return new OperationResult().Failed(_Localizer["Id not Found"]);
+
+                    if (tAccessLevel.tblUsers.Any())
+                        return new OperationResult().Failed(_Localizer["AccessLevel has User"]);
+                }
+                #endregion GetAccessLevel
+
+                #region RemoveAccessLevel
+                {
+                    await _AccessLevelRepository.DeleteAsync(tAccessLevel);
+                }
+                #endregion RemoveAccessLevel
+
+                return new OperationResult().Successed();
+            }
+            catch (ArgumentInvalidException ex)
+            {
+                _Logger.Debug(ex.Message);
+                return new OperationResult().Failed(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error(ex);
+                return new OperationResult().Failed(_Localizer["Error500"]);
+            }
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace SinaShop.Application.Contract.PresentationDTO.ViewModels
         [Display(Name = nameof(Name))]
         public string Name { get; set; }
 
-        [Display(Name = nameof(CountUser))]
-        public int CountUser { get; set; }
+        [Display(Name = nameof(UserCount))]
+        public int UserCount { get; set; }
     }
 }
