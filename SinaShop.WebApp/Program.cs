@@ -23,6 +23,8 @@ WebApplication app = null;
     }
     builder.Services.AddAntiforgery(a => a.HeaderName.Equals("XSRF-TOKEN"));
 
+    builder.Services.WebEncoderConfig();
+
     builder.Services.AddCustomLocalization();
 
     builder.Services.AddRazorPage()

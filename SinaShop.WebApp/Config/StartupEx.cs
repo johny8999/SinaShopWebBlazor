@@ -7,11 +7,21 @@ using Microsoft.AspNetCore.Builder;
 using SinaShop.WebApp.Common.Utilities.IpAddress;
 using FrameWork.Application.Services.Localizer;
 using SinaShop.WebApp.Common.Utilities.MessageBox;
+using Microsoft.Extensions.WebEncoders;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 namespace SinaShop.WebApp.Config
 {
     public static class StartupEx
     {
+        public static IServiceCollection WebEncoderConfig(this IServiceCollection services)
+        {
+            return services.Configure<WebEncoderOptions>(opt =>
+            {
+                opt.TextEncoderSettings = new TextEncoderSettings(UnicodeRanges.Arabic, UnicodeRanges.BasicLatin);
+            });
+        }
         public static IMvcBuilder AddRazorPage(this IServiceCollection services)
         {
             return services.AddRazorPages(opt =>

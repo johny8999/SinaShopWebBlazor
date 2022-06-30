@@ -98,7 +98,7 @@ function sendData(_Url, _data, _CallBack = function (res) { }) {
 
 
 function removeData(_url, _data = {}) {
-    confirm(_deleteMsg, "", function (){
+    confirm(_deleteMsg, "", function () {
         sendData(_url,_data)
     });
 }

@@ -98,6 +98,8 @@ namespace SinaShop.WebApp.Pages.Admin.AccessLevel
                 return null;
             }
         }
+
+        [BindProperty]
         public viListAccessLevelModel input { get; set; }
         public vmListAccessLevelModel Data { get; set; }
     }
