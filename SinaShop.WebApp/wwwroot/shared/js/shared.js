@@ -87,19 +87,15 @@ function sendData(_Url, _data, _CallBack = function (res) { }) {
                 alert("Error 500");
                 return;
             }
-            //else {
-            //    alert(err.status);
-            //}
-
         }
     });
 }
 
 
 
-function removeData(_url, _data = {}) {
+function removeData(_url, _Id) {
     confirm(_deleteMsg, "", function () {
-        sendData(_url,_data)
+        sendData(_url, {Id:_Id})
     });
 }
 
