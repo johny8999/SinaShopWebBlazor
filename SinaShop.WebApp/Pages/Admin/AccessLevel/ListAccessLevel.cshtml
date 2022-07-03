@@ -3,6 +3,7 @@
 @model SinaShop.WebApp.Pages.Admin.AccessLevel.ListAccessLevelModel
 @{
     Layout = "~/Pages/shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "";
 }
 
 <div class="content-wrapper">
@@ -70,4 +71,9 @@
             <a class="dropdown-item" onclick="removeData('/@ViewData["Culture"]/Admin/AccessLevel/List?handler=Delete','#:Id#')"><i class="dropdown-icon fa fa-trash "></i>@Localizer["Delete"]</a>
         </div>
     </div>
+</script>
+<script>
+function add(){
+    location.href = '/@ViewData["Culture"]/Admin/AccessLevel/Add?ReturnUrl=@Request.GetCurrentEncodeUrl()';
+}
 </script>
