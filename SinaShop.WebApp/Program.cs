@@ -6,6 +6,8 @@ using SinaShop.Infrastructure.Services.ReCaptcha;
 using SinaShop.WebApp.Authentication;
 using SinaShop.WebApp.Config;
 using SinaShop.WebApp.Middlewares;
+using FrameWork.Infrastructure;
+using ILogger = FrameWork.Infrastructure.ILogger;
 
 var builder = WebApplication.CreateBuilder(args);
 WebApplication app = null;
@@ -88,7 +90,7 @@ WebApplication app = null;
         }
         catch (Exception ex)
         {
-            var _Logger = Services.GetRequiredService<FrameWork.Infrastructure.ILogger>();
+            var _Logger = Services.GetRequiredService<ILogger>();
             _Logger.Fatal(ex);
         }
     }

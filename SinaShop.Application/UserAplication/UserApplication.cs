@@ -412,6 +412,7 @@ public class UserApplication : IUserApplication
             throw new Exception();
         }
     }
+
     public async Task<tblUsers> FindUserById(string Id)
     {
         try
@@ -428,6 +429,11 @@ public class UserApplication : IUserApplication
             _Logger.Error(ex);
             throw new Exception();
         }
+    }
+
+    public async Task<tblUsers> FindByIdAsync(string userId)
+    {
+        return await _UserRepository.FindByIdAsync(userId);
     }
 
     public async Task<tblUsers> FindUserByEmail(string Email)

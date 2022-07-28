@@ -9,7 +9,7 @@ namespace SinaShop.Application.Contract.PresentationDTO.ViewInputs
     {
         [Display(Name = nameof(Id))]
         [RequiredString]
-        //[GUID]
+        [GUID]
         public string Id { get; set; }
     }
 }

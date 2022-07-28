@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
-    <Content Remove="Pages\Admin\AccessLevel\AddAccessLevel.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -34,17 +33,8 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
-    <None Include="Pages\Admin\AccessLevel\AddAccessLevel.cshtml" />
     <None Include="wwwroot\main\js\sweetalert\sweetalert.js" />
     <None Include="wwwroot\main\js\sweetalert\sweetalert.min.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Admin\AccessLevel\AddAccessLevel.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Admin\AccessLevel\AddAccessLevel.cshtml" />
   </ItemGroup>
 
 </Project>
