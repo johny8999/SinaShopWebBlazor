@@ -163,7 +163,7 @@ namespace SinaShop.Application.AccessLevel
                 }
                 #endregion RemoveAccessLevel
 
-                return new OperationResult().Successed();
+                return new OperationResult().Succeeded();
             }
             catch (ArgumentInvalidException ex)
             {

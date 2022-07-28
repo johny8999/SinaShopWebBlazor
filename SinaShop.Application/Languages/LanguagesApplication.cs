@@ -50,7 +50,7 @@ namespace SinaShop.Application.Languages
 
 
                 await _languageRepository.AddAsync(tblLanguages);
-                return new OperationResult().Successed();
+                return new OperationResult().Succeeded();
             }
             catch (ArgumentNullException ex)
             {

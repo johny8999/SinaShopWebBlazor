@@ -2,6 +2,7 @@
 using FrameWork.Application.Services.Localizer;
 using FrameWork.Common.ExMethods;
 using FrameWork.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using SinaShop.Application.Contract.ApplicationDTO.Result;
 using SinaShop.Application.Contract.ApplicationDTO.Role;
 using SinaShop.Application.UserAplication;

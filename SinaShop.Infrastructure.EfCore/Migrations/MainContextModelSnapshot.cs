@@ -17,7 +17,7 @@ namespace SinaShop.Infrastructure.EfCore.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -220,6 +220,11 @@ namespace SinaShop.Infrastructure.EfCore.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<Guid?>("ParentId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("Sort")
                         .HasColumnType("int");
 
@@ -389,6 +394,18 @@ namespace SinaShop.Infrastructure.EfCore.Migrations
                     b.Navigation("tblRoles");
                 });
 
+            modelBuilder.Entity("SinaShop.Domain.Users.RoleAgg.Entities.tblRoles", b =>
+                {
+                    b.HasOne("SinaShop.Domain.Users.RoleAgg.Entities.tblRoles", "tblRoleParent")
+                        .WithMany("tblRolesChilds")
+                        .HasForeignKey("ParentId")
+                        .HasPrincipalKey("ParentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("tblRoleParent");
+                });
+
             modelBuilder.Entity("SinaShop.Domain.Users.UserAgg.Entities.tblUserRole", b =>
                 {
                     b.HasOne("SinaShop.Domain.Users.RoleAgg.Entities.tblRoles", null)
@@ -425,6 +442,8 @@ namespace SinaShop.Infrastructure.EfCore.Migrations
             modelBuilder.Entity("SinaShop.Domain.Users.RoleAgg.Entities.tblRoles", b =>
                 {
                     b.Navigation("tblAccessLevelRoles");
+
+                    b.Navigation("tblRolesChilds");
                 });
 #pragma warning restore 612, 618
         }

@@ -14,6 +14,7 @@ namespace SinaShop.Infrastructure.EfCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ParentId = table.Column<Guid>(type: "uniqueidentifier", maxLength: 450, nullable: false),
                     PageName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Sort = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -24,6 +25,7 @@ namespace SinaShop.Infrastructure.EfCore.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                    table.UniqueConstraint("AK_AspNetRoles_ParentId", x => x.ParentId);
                 });
 
             migrationBuilder.CreateTable(

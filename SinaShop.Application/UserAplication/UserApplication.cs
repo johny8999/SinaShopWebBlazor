@@ -87,7 +87,7 @@ public class UserApplication : IUserApplication
                         #endregion Send Email
                     }
                     #endregion Sen Confirmation Email
-                    return new OperationResult().Successed();
+                    return new OperationResult().Succeeded();
                 }
                 else
                 {
@@ -132,7 +132,7 @@ public class UserApplication : IUserApplication
             var Result = await _UserRepository.AddAsync(user, Input.Password);
             if (Result.Succeeded)
             {
-                return new OperationResult().Successed(user.Id.ToString());
+                return new OperationResult().Succeeded(user.Id.ToString());
             }
             else
             {
@@ -198,7 +198,7 @@ public class UserApplication : IUserApplication
                 });
             }
             #endregion Change user access level to confirmedUser
-            return new OperationResult().Successed("Email Confirmation has been Succssed");
+            return new OperationResult().Succeeded("Email Confirmation has been Succssed");
         }
         catch (ArgumentInvalidException ex)
         {
@@ -246,7 +246,7 @@ public class UserApplication : IUserApplication
             }
             #endregion Change user role
 
-            return new OperationResult().Successed();
+            return new OperationResult().Succeeded();
         }
         catch (ArgumentInvalidException ex)
         {
@@ -298,7 +298,7 @@ public class UserApplication : IUserApplication
             }
             #endregion Add New Roles
 
-            return new OperationResult().Successed();
+            return new OperationResult().Succeeded();
         }
         catch (ArgumentInvalidException ex)
         {
@@ -356,7 +356,7 @@ public class UserApplication : IUserApplication
 
             var Result = await _UserRepository.PasswordSignInAsync(quser, input.Password, false, true);
             if (Result.Succeeded)
-                return new OperationResult().Successed(quser.Id.ToString());
+                return new OperationResult().Succeeded(quser.Id.ToString());
 
             else if (Result.IsLockedOut)
                 return new OperationResult().Failed(_Localizer["Your Account is IsLockedOut"]);
@@ -496,7 +496,7 @@ public class UserApplication : IUserApplication
                 await _EmailSender.SendAsync(input.Email, AuthConst.Issuer + _Localizer["PasswordRecovery"], GenerateEmailTemplate);
             }
             #endregion SendEmail
-            return new OperationResult().Successed("Email has been sent and you should click link");
+            return new OperationResult().Succeeded("Email has been sent and you should click link");
         }
         catch (ArgumentInvalidException ex)
         {
@@ -542,7 +542,7 @@ public class UserApplication : IUserApplication
             {
                 var Result = await _UserRepository.ResetPasswordAsync(qUser, Token, input.Password);
                 if (Result.Succeeded)
-                    return new OperationResult().Successed(_Localizer["Your password has been changed successly"]);
+                    return new OperationResult().Succeeded(_Localizer["Your password has been changed successly"]);
 
                 else
                     return new OperationResult().Failed(String.Join(',', Result.Errors.Select(a => a.Description)));
@@ -591,7 +591,7 @@ public class UserApplication : IUserApplication
                 await _UserRepository.UpdateAsync(User);
             }
             #endregion EditCurrentUser
-            return new OperationResult().Successed(_Localizer["Your Accound Has been Updated"]);
+            return new OperationResult().Succeeded(_Localizer["Your Accound Has been Updated"]);
         }
         catch (ArgumentInvalidException ex)
         {
