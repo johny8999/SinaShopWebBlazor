@@ -5,17 +5,17 @@ namespace FrameWork.Common.ExMethods;
 
 public static class RequestEx
 {
-    public static string GetCurrentEncodeUrl(this HttpRequest request)
+    public static string GetCurrentEncodedUrl(this HttpRequest Request)
     {
-        return WebUtility.UrlEncode(request.GetCurrentUrl());
+        return WebUtility.UrlEncode(GetCurrentUrl(Request));
     }
-
-    public static string GetCurrentUrl(this HttpRequest request)
+    public static string GetCurrentUrl(this HttpRequest Request)
     {
-        string Url = request.Scheme + "://" + request.Host + "/" + request.Path;
 
-        if (request.QueryString.HasValue)
-            Url += "?" + request.QueryString.Value;
+        string Url = Request.Scheme + "://" + Request.Host + "/" + Request.Path;
+
+        if (Request.QueryString.HasValue)
+            Url += "?" + Request.QueryString.Value;
 
         return Url;
     }
